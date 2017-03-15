@@ -56,11 +56,8 @@ public class Entregas_user extends javax.swing.JFrame {
             }
         });
 
-        jList2.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
+        jList2.setModel(defaultmodel);
+        jList2.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane2.setViewportView(jList2);
 
         jButton2.setText("Hecho");
