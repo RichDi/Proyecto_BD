@@ -5,6 +5,9 @@
  */
 package cocina.user_folder;
 
+import cocina.user_folder.Dialogos.DialogoEntrega;
+import cocina.user_folder.Dialogos.DialogoPlatillo;
+
 /**
  *
  * @author drdr_
@@ -65,9 +68,15 @@ public class Entregas_user extends javax.swing.JFrame {
         columnBinding.setColumnClass(java.util.Date.class);
         bindingGroup.addBinding(jTableBinding);
 
+        jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable2MouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(jTable2);
 
-        jButton2.setText("Cerrar");
+        jButton2.setBackground(new java.awt.Color(255, 255, 255));
+        jButton2.setText("Actualizar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -128,8 +137,18 @@ public class Entregas_user extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        Entregas_user in = new Entregas_user();
+        in.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
+        int fila = jTable2.getSelectedRow();
+        int id = (int) jTable2.getValueAt(fila, 0);        
+        
+        DialogoEntrega dia = new DialogoEntrega(id);
+        dia.setVisible(true);
+    }//GEN-LAST:event_jTable2MouseClicked
 
     /**
      * @param args the command line arguments

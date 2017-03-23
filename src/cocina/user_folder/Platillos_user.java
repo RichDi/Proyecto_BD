@@ -5,6 +5,8 @@
  */
 package cocina.user_folder;
 
+import cocina.user_folder.Dialogos.DialogoPlatillo;
+
 /**
  *
  * @author drdr_
@@ -69,7 +71,8 @@ public class Platillos_user extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jTable2);
 
-        jButton2.setText("Cerrar");
+        jButton2.setBackground(new java.awt.Color(255, 255, 255));
+        jButton2.setText("Actualizar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -94,7 +97,7 @@ public class Platillos_user extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -130,16 +133,20 @@ public class Platillos_user extends javax.swing.JFrame {
         dia.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
-
     private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
         int fila = jTable2.getSelectedRow();
-        int id = (int) jTable2.getValueAt(fila, 0);
-        String nombre = (String) jTable2.getValueAt(fila, 1);        
+        int id = (int) jTable2.getValueAt(fila, 0);        
+        
+        DialogoPlatillo dia = new DialogoPlatillo(id);
+        dia.setVisible(true);
           
     }//GEN-LAST:event_jTable2MouseClicked
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        Platillos_user in = new Platillos_user();
+        in.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

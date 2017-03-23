@@ -6,6 +6,7 @@
 
 package cocina.user_folder;
 
+import cocina.user_folder.Dialogos.DialogoInsumo;
 import javax.swing.JOptionPane;
 import javax.swing.table.TableModel;
 
@@ -77,7 +78,8 @@ public class Insumos extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(jTable3);
 
-        jButton2.setText("Cerrar");
+        jButton2.setBackground(new java.awt.Color(255, 255, 255));
+        jButton2.setText("Actualizar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -140,16 +142,16 @@ public class Insumos extends javax.swing.JFrame {
 
     private void jTable3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable3MouseClicked
         int fila = jTable3.getSelectedRow();
-        int valor = (int) jTable3.getValueAt(fila, 0);
-        
-        System.out.println(valor);
+        int valor = (int) jTable3.getValueAt(fila, 0);               
         
         DialogoInsumo a = new DialogoInsumo(valor);
         a.setVisible(true);                
     }//GEN-LAST:event_jTable3MouseClicked
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        
+        Insumos in = new Insumos();
+        in.setVisible(true);
+        this.dispose();        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

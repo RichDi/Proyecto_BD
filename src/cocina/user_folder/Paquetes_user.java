@@ -5,6 +5,9 @@
  */
 package cocina.user_folder;
 
+import cocina.user_folder.Dialogos.DialogoPaquete;
+import cocina.user_folder.Dialogos.DialogoPlatillo;
+
 /**
  *
  * @author drdr_
@@ -17,6 +20,10 @@ public class Paquetes_user extends javax.swing.JFrame {
     public Paquetes_user() {
         initComponents();
         this.setLocationRelativeTo(null);
+    }
+
+    private Paquetes_user(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -60,9 +67,15 @@ public class Paquetes_user extends javax.swing.JFrame {
         columnBinding.setColumnClass(String.class);
         bindingGroup.addBinding(jTableBinding);
 
+        jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable2MouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jTable2);
 
-        jButton2.setText("Cerrar");
+        jButton2.setBackground(new java.awt.Color(255, 255, 255));
+        jButton2.setText("Actualizar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -123,8 +136,18 @@ public class Paquetes_user extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        Paquetes_user in = new Paquetes_user();
+        in.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
+        int fila = jTable2.getSelectedRow();
+        int id = (int) jTable2.getValueAt(fila, 0);        
+        
+        Paquetes_user dia = new Paquetes_user(id);
+        dia.setVisible(true);
+    }//GEN-LAST:event_jTable2MouseClicked
 
     /**
      * @param args the command line arguments
