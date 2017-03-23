@@ -1,8 +1,11 @@
 package cocina.admin_folder;
+
+import cocina.user_folder.Cover;
+
 public class Cocina {
 public static void main(String[] args) {
-        Usuario v = new Usuario();
-                v.setVisible(true);
+        Cover v = new Cover();
+        v.setVisible(true);
     }
     
 }

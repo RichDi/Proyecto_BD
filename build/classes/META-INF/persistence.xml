@@ -10,4 +10,32 @@
       <property name="javax.persistence.jdbc.password" value="qonmqa3p"/>
     </properties>
   </persistence-unit>
+  <persistence-unit name="bd?zeroDateTimeBehavior=convertToNullPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>cocina.user_folder.Insumos_1</class>
+    <class>cocina.user_folder.Platillos</class>
+    <class>cocina.user_folder.Entrega</class>
+    <class>cocina.user_folder.Paquetes</class>
+    <class>cocina.user_folder.Entregas</class>
+    <class>cocina.user_folder.EntregaElements</class>
+    <class>cocina.user_folder.Habitaciones</class>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/bd?zeroDateTimeBehavior=convertToNull"/>
+      <property name="javax.persistence.jdbc.user" value="root"/>
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+      <property name="javax.persistence.jdbc.password" value="qonmqa3p"/>
+    </properties>
+  </persistence-unit>
+  <persistence-unit name="pro_bd?zeroDateTimeBehavior=convertToNullPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>cocina.user_folder.Insumos_1</class>
+    <class>cocina.user_folder.Paquetes</class>
+    <class>cocina.user_folder.Entregas</class>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/pro_bd?zeroDateTimeBehavior=convertToNull"/>
+      <property name="javax.persistence.jdbc.user" value="root"/>
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+      <property name="javax.persistence.jdbc.password" value="qonmqa3p"/>
+    </properties>
+  </persistence-unit>
 </persistence>
