@@ -29,31 +29,14 @@ public class Paquetes_user extends javax.swing.JFrame {
     private void initComponents() {
         bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
-        entityManager0 = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("bd?zeroDateTimeBehavior=convertToNullPU").createEntityManager();
+        entityManager0 = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("pro_bd?zeroDateTimeBehavior=convertToNullPU").createEntityManager();
         paquetesQuery = java.beans.Beans.isDesignTime() ? null : entityManager0.createQuery("SELECT p FROM Paquetes p");
         paquetesList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : paquetesQuery.getResultList();
-        paquetesQuery1 = java.beans.Beans.isDesignTime() ? null : entityManager0.createQuery("SELECT p FROM Paquetes p");
-        paquetesList1 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : paquetesQuery1.getResultList();
-        paquetesQuery2 = java.beans.Beans.isDesignTime() ? null : entityManager0.createQuery("SELECT p FROM Paquetes p");
-        paquetesList2 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : paquetesQuery2.getResultList();
-        paquetesQuery3 = java.beans.Beans.isDesignTime() ? null : entityManager0.createQuery("SELECT p FROM Paquetes p");
-        paquetesList3 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : paquetesQuery3.getResultList();
-        paquetesQuery4 = java.beans.Beans.isDesignTime() ? null : entityManager0.createQuery("SELECT p FROM Paquetes p");
-        paquetesList4 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : paquetesQuery4.getResultList();
-        paquetesQuery5 = java.beans.Beans.isDesignTime() ? null : entityManager0.createQuery("SELECT p FROM Paquetes p");
-        paquetesList5 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : paquetesQuery5.getResultList();
-        paquetesQuery6 = java.beans.Beans.isDesignTime() ? null : entityManager0.createQuery("SELECT p FROM Paquetes p");
-        paquetesList6 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : paquetesQuery6.getResultList();
-        paquetesQuery7 = java.beans.Beans.isDesignTime() ? null : entityManager0.createQuery("SELECT p FROM Paquetes p");
-        paquetesList7 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : paquetesQuery7.getResultList();
-        paquetesQuery8 = java.beans.Beans.isDesignTime() ? null : entityManager0.createQuery("SELECT p FROM Paquetes p");
-        paquetesList8 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : paquetesQuery8.getResultList();
-        paquetesQuery9 = java.beans.Beans.isDesignTime() ? null : entityManager0.createQuery("SELECT p FROM Paquetes p");
-        paquetesList9 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : paquetesQuery9.getResultList();
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
+        jButton2 = new javax.swing.JButton();
         slideMenu1 = new cocina.user_folder.SlideMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -62,13 +45,15 @@ public class Paquetes_user extends javax.swing.JFrame {
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Alimentacion/TABLA/Botonagregar.png"))); // NOI18N
         jButton1.setBorder(null);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
-        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, paquetesList9, jTable2);
+        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, paquetesList, jTable2);
         org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${idPaquete}"));
         columnBinding.setColumnName("Id Paquete");
-        columnBinding.setColumnClass(Integer.class);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${idPaqueteElement}"));
-        columnBinding.setColumnName("Id Paquete Element");
         columnBinding.setColumnClass(Integer.class);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${nombre}"));
         columnBinding.setColumnName("Nombre");
@@ -76,6 +61,13 @@ public class Paquetes_user extends javax.swing.JFrame {
         bindingGroup.addBinding(jTableBinding);
 
         jScrollPane2.setViewportView(jTable2);
+
+        jButton2.setText("Cerrar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -87,15 +79,18 @@ public class Paquetes_user extends javax.swing.JFrame {
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 547, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton1)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton2)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(6, 6, 6)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2)
                 .addContainerGap())
         );
@@ -121,6 +116,15 @@ public class Paquetes_user extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        DialogoPaquete dia = new DialogoPaquete();
+        dia.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -160,29 +164,12 @@ public class Paquetes_user extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.persistence.EntityManager entityManager0;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable2;
     private java.util.List<cocina.user_folder.Paquetes> paquetesList;
-    private java.util.List<cocina.user_folder.Paquetes> paquetesList1;
-    private java.util.List<cocina.user_folder.Paquetes> paquetesList2;
-    private java.util.List<cocina.user_folder.Paquetes> paquetesList3;
-    private java.util.List<cocina.user_folder.Paquetes> paquetesList4;
-    private java.util.List<cocina.user_folder.Paquetes> paquetesList5;
-    private java.util.List<cocina.user_folder.Paquetes> paquetesList6;
-    private java.util.List<cocina.user_folder.Paquetes> paquetesList7;
-    private java.util.List<cocina.user_folder.Paquetes> paquetesList8;
-    private java.util.List<cocina.user_folder.Paquetes> paquetesList9;
     private javax.persistence.Query paquetesQuery;
-    private javax.persistence.Query paquetesQuery1;
-    private javax.persistence.Query paquetesQuery2;
-    private javax.persistence.Query paquetesQuery3;
-    private javax.persistence.Query paquetesQuery4;
-    private javax.persistence.Query paquetesQuery5;
-    private javax.persistence.Query paquetesQuery6;
-    private javax.persistence.Query paquetesQuery7;
-    private javax.persistence.Query paquetesQuery8;
-    private javax.persistence.Query paquetesQuery9;
     private cocina.user_folder.SlideMenu slideMenu1;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables

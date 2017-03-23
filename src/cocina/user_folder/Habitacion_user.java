@@ -23,9 +23,7 @@ public class Habitacion_user extends javax.swing.JFrame {
 
     /**
      * Creates new form Habitacion_user
-     */
-    
-    DefaultListModel Model_Dietas = new DefaultListModel();
+     */        
     
     public Habitacion_user() {
         initComponents();        
@@ -41,9 +39,6 @@ public class Habitacion_user extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        entityManager = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("cocina_hospital?zeroDateTimeBehavior=convertToNullPU").createEntityManager();
-        dietaQuery = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT d FROM Dieta d");
-        dietaList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : dietaQuery.getResultList();
         slideMenu1 = new cocina.user_folder.SlideMenu();
         jPanel1 = new javax.swing.JPanel();
 
@@ -119,9 +114,6 @@ public class Habitacion_user extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private java.util.List<cocina.user_folder.Dieta> dietaList;
-    private javax.persistence.Query dietaQuery;
-    private javax.persistence.EntityManager entityManager;
     private javax.swing.JPanel jPanel1;
     private cocina.user_folder.SlideMenu slideMenu1;
     // End of variables declaration//GEN-END:variables

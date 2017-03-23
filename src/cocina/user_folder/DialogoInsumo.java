@@ -19,6 +19,7 @@ import javax.swing.JOptionPane;
 public class DialogoInsumo extends javax.swing.JFrame {
 
     private int modificador=0;
+    private int value;
 
     /**
      * Creates new form DialogoInsumo
@@ -33,7 +34,8 @@ public class DialogoInsumo extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         tf_titulo.setText("Modificar Insumo");
-        consultar(value);
+        this.value = value;
+        consultar();
         modificador=0;
     }
 
@@ -221,7 +223,7 @@ public class DialogoInsumo extends javax.swing.JFrame {
         }    
     }
 
-    private void consultar(int value) {
+    private void consultar() {
                 
         try{            
             Class.forName("com.mysql.jdbc.Driver");
@@ -267,7 +269,8 @@ public class DialogoInsumo extends javax.swing.JFrame {
                 
         String sql = "update insumos "
                 + "set nombre = " + "\"" + nombre + "\"" + ","                  
-                + "categoria = "+ "\"" + categoria + "\";";
+                + "categoria = "+ "\"" + categoria + "\""
+                + "where id_insumo = " + value + ";";
         
         System.out.println(sql);
         

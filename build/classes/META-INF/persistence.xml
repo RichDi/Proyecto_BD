@@ -31,6 +31,9 @@
     <class>cocina.user_folder.Insumos_1</class>
     <class>cocina.user_folder.Paquetes</class>
     <class>cocina.user_folder.Entregas</class>
+    <class>cocina.user_folder.EntregaElements</class>
+    <class>cocina.user_folder.Habitaciones</class>
+    <class>cocina.user_folder.Platillos</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/pro_bd?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>

@@ -29,43 +29,33 @@ public class Platillos_user extends javax.swing.JFrame {
     private void initComponents() {
         bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
-        entityManager = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("bd?zeroDateTimeBehavior=convertToNullPU").createEntityManager();
-        platillosQuery = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT p FROM Platillos p");
+        entityManager0 = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("pro_bd?zeroDateTimeBehavior=convertToNullPU").createEntityManager();
+        platillosQuery = java.beans.Beans.isDesignTime() ? null : entityManager0.createQuery("SELECT p FROM Platillos p");
         platillosList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : platillosQuery.getResultList();
-        platillosQuery1 = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT p FROM Platillos p");
+        platillosQuery1 = java.beans.Beans.isDesignTime() ? null : entityManager0.createQuery("SELECT p FROM Platillos p");
         platillosList1 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : platillosQuery1.getResultList();
-        platillosQuery2 = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT p FROM Platillos p");
-        platillosList2 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : platillosQuery2.getResultList();
-        entregaElementsQuery = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT e FROM EntregaElements e");
-        entregaElementsList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : entregaElementsQuery.getResultList();
-        platillosQuery3 = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT p FROM Platillos p");
-        platillosList3 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : platillosQuery3.getResultList();
-        habitacionesQuery = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT h FROM Habitaciones h");
-        habitacionesList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : habitacionesQuery.getResultList();
-        paquetesQuery = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT p FROM Paquetes p");
-        paquetesList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : paquetesQuery.getResultList();
-        platillosQuery4 = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT p FROM Platillos p");
-        platillosList4 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : platillosQuery4.getResultList();
-        platillosQuery5 = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT p FROM Platillos p");
-        platillosList5 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : platillosQuery5.getResultList();
-        platillosQuery6 = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT p FROM Platillos p");
-        platillosList6 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : platillosQuery6.getResultList();
         jPanel1 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         slideMenu2 = new cocina.user_folder.SlideMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, platillosList6, jTable2);
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Alimentacion/TABLA/Botonagregar.png"))); // NOI18N
+        jButton1.setBorder(null);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, platillosList1, jTable2);
         org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${idPlatillo}"));
         columnBinding.setColumnName("Id Platillo");
-        columnBinding.setColumnClass(Integer.class);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${idPlatilloElements}"));
-        columnBinding.setColumnName("Id Platillo Elements");
         columnBinding.setColumnClass(Integer.class);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${nombre}"));
         columnBinding.setColumnName("Nombre");
@@ -74,11 +64,10 @@ public class Platillos_user extends javax.swing.JFrame {
 
         jScrollPane2.setViewportView(jTable2);
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Alimentacion/TABLA/Botonagregar.png"))); // NOI18N
-        jButton1.setBorder(null);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButton2.setText("Cerrar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButton2ActionPerformed(evt);
             }
         });
 
@@ -92,14 +81,17 @@ public class Platillos_user extends javax.swing.JFrame {
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 546, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton1)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton2)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2)
                 .addContainerGap())
@@ -129,9 +121,13 @@ public class Platillos_user extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        DialogoInsumo dia = new DialogoInsumo();
+        DialogoPlatillo dia = new DialogoPlatillo();
         dia.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -169,31 +165,16 @@ public class Platillos_user extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.persistence.EntityManager entityManager;
-    private java.util.List<cocina.user_folder.EntregaElements> entregaElementsList;
-    private javax.persistence.Query entregaElementsQuery;
-    private java.util.List<cocina.user_folder.Habitaciones> habitacionesList;
-    private javax.persistence.Query habitacionesQuery;
+    private javax.persistence.EntityManager entityManager0;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable2;
-    private java.util.List<cocina.user_folder.Paquetes> paquetesList;
-    private javax.persistence.Query paquetesQuery;
     private java.util.List<cocina.user_folder.Platillos> platillosList;
     private java.util.List<cocina.user_folder.Platillos> platillosList1;
-    private java.util.List<cocina.user_folder.Platillos> platillosList2;
-    private java.util.List<cocina.user_folder.Platillos> platillosList3;
-    private java.util.List<cocina.user_folder.Platillos> platillosList4;
-    private java.util.List<cocina.user_folder.Platillos> platillosList5;
-    private java.util.List<cocina.user_folder.Platillos> platillosList6;
     private javax.persistence.Query platillosQuery;
     private javax.persistence.Query platillosQuery1;
-    private javax.persistence.Query platillosQuery2;
-    private javax.persistence.Query platillosQuery3;
-    private javax.persistence.Query platillosQuery4;
-    private javax.persistence.Query platillosQuery5;
-    private javax.persistence.Query platillosQuery6;
     private cocina.user_folder.SlideMenu slideMenu2;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables

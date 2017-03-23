@@ -32,66 +32,15 @@ public class Insumos extends javax.swing.JFrame {
     private void initComponents() {
         bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
-        entityManager = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("bd?zeroDateTimeBehavior=convertToNullPU").createEntityManager();
+        entityManager = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("pro_bd?zeroDateTimeBehavior=convertToNullPU").createEntityManager();
         insumos_1Query = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT i FROM Insumos_1 i");
         insumos_1List = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : insumos_1Query.getResultList();
-        insumos_1Query1 = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT i FROM Insumos_1 i");
-        insumos_1List1 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : insumos_1Query1.getResultList();
-        entityManager0 = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("pro_bd?zeroDateTimeBehavior=convertToNullPU").createEntityManager();
-        insumos_1Query2 = java.beans.Beans.isDesignTime() ? null : entityManager0.createQuery("SELECT i FROM Insumos_1 i");
-        insumos_1List2 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : insumos_1Query2.getResultList();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        insumos_1Query3 = java.beans.Beans.isDesignTime() ? null : entityManager0.createQuery("SELECT i FROM Insumos_1 i");
-        insumos_1List3 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : insumos_1Query3.getResultList();
-        insumos_1Query4 = java.beans.Beans.isDesignTime() ? null : entityManager0.createQuery("SELECT i FROM Insumos_1 i");
-        insumos_1List4 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : insumos_1Query4.getResultList();
-        insumos_1Query5 = java.beans.Beans.isDesignTime() ? null : entityManager0.createQuery("SELECT i FROM Insumos_1 i");
-        insumos_1List5 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : insumos_1Query5.getResultList();
-        insumos_1Query6 = java.beans.Beans.isDesignTime() ? null : entityManager0.createQuery("SELECT i FROM Insumos_1 i");
-        insumos_1List6 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : insumos_1Query6.getResultList();
-        insumos_1Query7 = java.beans.Beans.isDesignTime() ? null : entityManager0.createQuery("SELECT i FROM Insumos_1 i");
-        insumos_1List7 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : insumos_1Query7.getResultList();
-        insumos_1Query8 = java.beans.Beans.isDesignTime() ? null : entityManager0.createQuery("SELECT i FROM Insumos_1 i");
-        insumos_1List8 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : insumos_1Query8.getResultList();
-        insumos_1Query9 = java.beans.Beans.isDesignTime() ? null : entityManager0.createQuery("SELECT i FROM Insumos_1 i");
-        insumos_1List9 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : insumos_1Query9.getResultList();
-        insumos_1Query10 = java.beans.Beans.isDesignTime() ? null : entityManager0.createQuery("SELECT i FROM Insumos_1 i");
-        insumos_1List10 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : insumos_1Query10.getResultList();
-        insumos_1Query11 = java.beans.Beans.isDesignTime() ? null : entityManager0.createQuery("SELECT i FROM Insumos_1 i");
-        insumos_1List11 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : insumos_1Query11.getResultList();
-        insumos_1Query12 = java.beans.Beans.isDesignTime() ? null : entityManager0.createQuery("SELECT i FROM Insumos_1 i");
-        insumos_1List12 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : insumos_1Query12.getResultList();
-        insumos_1Query13 = java.beans.Beans.isDesignTime() ? null : entityManager0.createQuery("SELECT i FROM Insumos_1 i");
-        insumos_1List13 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : insumos_1Query13.getResultList();
-        insumos_1Query14 = java.beans.Beans.isDesignTime() ? null : entityManager0.createQuery("SELECT i FROM Insumos_1 i");
-        insumos_1List14 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : insumos_1Query14.getResultList();
-        insumos_1Query15 = java.beans.Beans.isDesignTime() ? null : entityManager0.createQuery("SELECT i FROM Insumos_1 i");
-        insumos_1List15 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : insumos_1Query15.getResultList();
-        entregasQuery = java.beans.Beans.isDesignTime() ? null : entityManager0.createQuery("SELECT e FROM Entregas e");
-        entregasList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : entregasQuery.getResultList();
-        insumos_1Query16 = java.beans.Beans.isDesignTime() ? null : entityManager0.createQuery("SELECT i FROM Insumos_1 i");
-        insumos_1List16 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : insumos_1Query16.getResultList();
-        entregasQuery1 = java.beans.Beans.isDesignTime() ? null : entityManager0.createQuery("SELECT e FROM Entregas e");
-        entregasList1 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : entregasQuery1.getResultList();
+        slideMenu1 = new cocina.user_folder.SlideMenu();
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
-        slideMenu1 = new cocina.user_folder.SlideMenu();
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -105,16 +54,34 @@ public class Insumos extends javax.swing.JFrame {
             }
         });
 
-        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, entregasList1, jTable3);
-        org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${idEntrega}"));
-        columnBinding.setColumnName("Id Entrega");
+        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, insumos_1List, jTable3);
+        org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${idInsumo}"));
+        columnBinding.setColumnName("Id Insumo");
         columnBinding.setColumnClass(Integer.class);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${fecha}"));
-        columnBinding.setColumnName("Fecha");
-        columnBinding.setColumnClass(java.util.Date.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${nombre}"));
+        columnBinding.setColumnName("Nombre");
+        columnBinding.setColumnClass(String.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${cantidad}"));
+        columnBinding.setColumnName("Cantidad");
+        columnBinding.setColumnClass(Integer.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${categoria}"));
+        columnBinding.setColumnName("Categoria");
+        columnBinding.setColumnClass(String.class);
         bindingGroup.addBinding(jTableBinding);
 
+        jTable3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable3MouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(jTable3);
+
+        jButton2.setText("Cerrar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -123,17 +90,20 @@ public class Insumos extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 516, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton1)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton2)
+                        .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3)
                 .addContainerGap())
@@ -145,15 +115,15 @@ public class Insumos extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(slideMenu1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
+                .addGap(0, 0, 0)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(slideMenu1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(slideMenu1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -163,9 +133,23 @@ public class Insumos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        DialogoInsumo dia = new DialogoInsumo();        
+        DialogoInsumo dia = new DialogoInsumo();
         dia.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTable3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable3MouseClicked
+        int fila = jTable3.getSelectedRow();
+        int valor = (int) jTable3.getValueAt(fila, 0);
+        
+        System.out.println(valor);
+        
+        DialogoInsumo a = new DialogoInsumo(valor);
+        a.setVisible(true);                
+    }//GEN-LAST:event_jTable3MouseClicked
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -204,50 +188,12 @@ public class Insumos extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.persistence.EntityManager entityManager;
-    private javax.persistence.EntityManager entityManager0;
-    private java.util.List<cocina.user_folder.Entregas> entregasList;
-    private java.util.List<cocina.user_folder.Entregas> entregasList1;
-    private javax.persistence.Query entregasQuery;
-    private javax.persistence.Query entregasQuery1;
     private java.util.List<cocina.user_folder.Insumos_1> insumos_1List;
-    private java.util.List<cocina.user_folder.Insumos_1> insumos_1List1;
-    private java.util.List<cocina.user_folder.Insumos_1> insumos_1List10;
-    private java.util.List<cocina.user_folder.Insumos_1> insumos_1List11;
-    private java.util.List<cocina.user_folder.Insumos_1> insumos_1List12;
-    private java.util.List<cocina.user_folder.Insumos_1> insumos_1List13;
-    private java.util.List<cocina.user_folder.Insumos_1> insumos_1List14;
-    private java.util.List<cocina.user_folder.Insumos_1> insumos_1List15;
-    private java.util.List<cocina.user_folder.Insumos_1> insumos_1List16;
-    private java.util.List<cocina.user_folder.Insumos_1> insumos_1List2;
-    private java.util.List<cocina.user_folder.Insumos_1> insumos_1List3;
-    private java.util.List<cocina.user_folder.Insumos_1> insumos_1List4;
-    private java.util.List<cocina.user_folder.Insumos_1> insumos_1List5;
-    private java.util.List<cocina.user_folder.Insumos_1> insumos_1List6;
-    private java.util.List<cocina.user_folder.Insumos_1> insumos_1List7;
-    private java.util.List<cocina.user_folder.Insumos_1> insumos_1List8;
-    private java.util.List<cocina.user_folder.Insumos_1> insumos_1List9;
     private javax.persistence.Query insumos_1Query;
-    private javax.persistence.Query insumos_1Query1;
-    private javax.persistence.Query insumos_1Query10;
-    private javax.persistence.Query insumos_1Query11;
-    private javax.persistence.Query insumos_1Query12;
-    private javax.persistence.Query insumos_1Query13;
-    private javax.persistence.Query insumos_1Query14;
-    private javax.persistence.Query insumos_1Query15;
-    private javax.persistence.Query insumos_1Query16;
-    private javax.persistence.Query insumos_1Query2;
-    private javax.persistence.Query insumos_1Query3;
-    private javax.persistence.Query insumos_1Query4;
-    private javax.persistence.Query insumos_1Query5;
-    private javax.persistence.Query insumos_1Query6;
-    private javax.persistence.Query insumos_1Query7;
-    private javax.persistence.Query insumos_1Query8;
-    private javax.persistence.Query insumos_1Query9;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable3;
     private cocina.user_folder.SlideMenu slideMenu1;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;

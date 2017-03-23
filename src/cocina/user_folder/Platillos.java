@@ -24,11 +24,10 @@ import javax.persistence.Transient;
  * @author drdr_
  */
 @Entity
-@Table(name = "platillos", catalog = "bd", schema = "")
+@Table(name = "platillos", catalog = "pro_bd", schema = "")
 @NamedQueries({
     @NamedQuery(name = "Platillos.findAll", query = "SELECT p FROM Platillos p")
     , @NamedQuery(name = "Platillos.findByIdPlatillo", query = "SELECT p FROM Platillos p WHERE p.idPlatillo = :idPlatillo")
-    , @NamedQuery(name = "Platillos.findByIdPlatilloElements", query = "SELECT p FROM Platillos p WHERE p.idPlatilloElements = :idPlatilloElements")
     , @NamedQuery(name = "Platillos.findByNombre", query = "SELECT p FROM Platillos p WHERE p.nombre = :nombre")})
 public class Platillos implements Serializable {
 
@@ -41,8 +40,6 @@ public class Platillos implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_platillo")
     private Integer idPlatillo;
-    @Column(name = "id_platillo_elements")
-    private Integer idPlatilloElements;
     @Column(name = "nombre")
     private String nombre;
 
@@ -61,16 +58,6 @@ public class Platillos implements Serializable {
         Integer oldIdPlatillo = this.idPlatillo;
         this.idPlatillo = idPlatillo;
         changeSupport.firePropertyChange("idPlatillo", oldIdPlatillo, idPlatillo);
-    }
-
-    public Integer getIdPlatilloElements() {
-        return idPlatilloElements;
-    }
-
-    public void setIdPlatilloElements(Integer idPlatilloElements) {
-        Integer oldIdPlatilloElements = this.idPlatilloElements;
-        this.idPlatilloElements = idPlatilloElements;
-        changeSupport.firePropertyChange("idPlatilloElements", oldIdPlatilloElements, idPlatilloElements);
     }
 
     public String getNombre() {

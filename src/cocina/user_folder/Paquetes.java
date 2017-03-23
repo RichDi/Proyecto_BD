@@ -24,11 +24,10 @@ import javax.persistence.Transient;
  * @author drdr_
  */
 @Entity
-@Table(name = "paquetes", catalog = "bd", schema = "")
+@Table(name = "paquetes", catalog = "pro_bd", schema = "")
 @NamedQueries({
     @NamedQuery(name = "Paquetes.findAll", query = "SELECT p FROM Paquetes p")
     , @NamedQuery(name = "Paquetes.findByIdPaquete", query = "SELECT p FROM Paquetes p WHERE p.idPaquete = :idPaquete")
-    , @NamedQuery(name = "Paquetes.findByIdPaqueteElement", query = "SELECT p FROM Paquetes p WHERE p.idPaqueteElement = :idPaqueteElement")
     , @NamedQuery(name = "Paquetes.findByNombre", query = "SELECT p FROM Paquetes p WHERE p.nombre = :nombre")})
 public class Paquetes implements Serializable {
 
@@ -41,8 +40,6 @@ public class Paquetes implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_paquete")
     private Integer idPaquete;
-    @Column(name = "id_paquete_element")
-    private Integer idPaqueteElement;
     @Column(name = "nombre")
     private String nombre;
 
@@ -61,16 +58,6 @@ public class Paquetes implements Serializable {
         Integer oldIdPaquete = this.idPaquete;
         this.idPaquete = idPaquete;
         changeSupport.firePropertyChange("idPaquete", oldIdPaquete, idPaquete);
-    }
-
-    public Integer getIdPaqueteElement() {
-        return idPaqueteElement;
-    }
-
-    public void setIdPaqueteElement(Integer idPaqueteElement) {
-        Integer oldIdPaqueteElement = this.idPaqueteElement;
-        this.idPaqueteElement = idPaqueteElement;
-        changeSupport.firePropertyChange("idPaqueteElement", oldIdPaqueteElement, idPaqueteElement);
     }
 
     public String getNombre() {
