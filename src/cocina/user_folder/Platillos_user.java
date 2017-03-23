@@ -62,6 +62,11 @@ public class Platillos_user extends javax.swing.JFrame {
         columnBinding.setColumnClass(String.class);
         bindingGroup.addBinding(jTableBinding);
 
+        jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable2MouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jTable2);
 
         jButton2.setText("Cerrar");
@@ -128,6 +133,13 @@ public class Platillos_user extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
+        int fila = jTable2.getSelectedRow();
+        int id = (int) jTable2.getValueAt(fila, 0);
+        String nombre = (String) jTable2.getValueAt(fila, 1);        
+          
+    }//GEN-LAST:event_jTable2MouseClicked
 
     /**
      * @param args the command line arguments
