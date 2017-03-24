@@ -210,7 +210,7 @@ public class DialogoPaquete extends javax.swing.JFrame {
                         .addGap(7, 7, 7)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -326,7 +326,7 @@ public class DialogoPaquete extends javax.swing.JFrame {
     private void getMax() {
         String sql_e = "insert into paquetes(nombre) values (" 
                 + "\"" +txt_title.getText()+ "\");";        
-        connect_and_catch(sql_e,"Agregado Platillo"); 
+        connect_and_catch(sql_e,"Agregado Paquete"); 
         
         try{            
             Class.forName("com.mysql.jdbc.Driver");

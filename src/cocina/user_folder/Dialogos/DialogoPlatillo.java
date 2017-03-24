@@ -30,6 +30,7 @@ public class DialogoPlatillo extends javax.swing.JFrame {
     ArrayList<String> lista_nombre = new ArrayList<>();
     ArrayList<String> lista_kilos = new ArrayList<>();
     ArrayList<String> lista_ids = new ArrayList<>();
+    private int value;
     
     public DialogoPlatillo() {
         initComponents();
@@ -37,7 +38,11 @@ public class DialogoPlatillo extends javax.swing.JFrame {
     }
 
     public DialogoPlatillo(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        initComponents();
+        this.setLocationRelativeTo(null);
+        this.value = id;
+        consultar();
+        consultarinsumos();
     }
 
     /**
@@ -404,18 +409,43 @@ public class DialogoPlatillo extends javax.swing.JFrame {
     private void grabar(String max) {
         for(int x=0;x<lista_ids.size();x++){         
             String ids = (String) lista_ids.get(x); 
-            String cantidad = (String) lista_kilos.get(x); 
-            
             System.out.println(ids);
-                
-            String sql = "insert into platillos_elements(id_platillo,id_insumo,cantidad) values("
-                + max + ","   
-                + ids + ","
-                + cantidad + ");";
+            String sql = "insert into platillos_elements(id_platillo,id_insumo) values("
+                + max + ","                   
+                + ids + ");";
         
             System.out.println(sql);
         
             connect_and_catch(sql,"Entrega Registrada"); 
         }       
+    }
+
+    private void consultar() {
+        try{            
+            Class.forName("com.mysql.jdbc.Driver");
+            String cadena = "jdbc:mysql://localhost/pro_bd?user=root&password=qonmqa3p";
+            Connection con = (Connection) DriverManager.getConnection(cadena);            
+            PreparedStatement stmt = null;            
+            
+            ResultSet table;           
+            String sql = "select * from platillos where "
+                    + "id_platillo = " + value;                    
+            stmt = con.prepareStatement(sql);
+            table = stmt.executeQuery();        
+            while (table.next()){                
+                txt_idins.setText(table.getString(1));                               
+            }                                    
+                                    
+        }catch(ClassNotFoundException e1){
+            JOptionPane.showMessageDialog(null,e1);
+        }catch(SQLException e2){
+            JOptionPane.showMessageDialog(null,e2);
+        }catch(Exception e3){
+            JOptionPane.showMessageDialog(null,e3);
+        }
+    }
+    
+    private void consultarinsumos() {
+        
     }
 }
