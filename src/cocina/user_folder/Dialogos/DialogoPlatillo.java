@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
@@ -43,6 +44,8 @@ public class DialogoPlatillo extends javax.swing.JFrame {
         this.value = id;
         consultar();
         consultarinsumos();
+        consultarvalores();        
+        agregarvalores();
     }
 
     /**
@@ -80,6 +83,8 @@ public class DialogoPlatillo extends javax.swing.JFrame {
         txt_title = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         txt_idins = new javax.swing.JLabel();
+        delete_btn1 = new javax.swing.JButton();
+        delete_btn2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -151,12 +156,32 @@ public class DialogoPlatillo extends javax.swing.JFrame {
 
         txt_idins.setText("...");
 
+        delete_btn1.setBackground(new java.awt.Color(255, 102, 102));
+        delete_btn1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        delete_btn1.setForeground(new java.awt.Color(255, 255, 255));
+        delete_btn1.setText("Eliminar");
+        delete_btn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                delete_btn1ActionPerformed(evt);
+            }
+        });
+
+        delete_btn2.setBackground(new java.awt.Color(255, 102, 102));
+        delete_btn2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        delete_btn2.setForeground(new java.awt.Color(255, 255, 255));
+        delete_btn2.setText("Quitar");
+        delete_btn2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                delete_btn2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -177,29 +202,33 @@ public class DialogoPlatillo extends javax.swing.JFrame {
                                             .addComponent(txt_idins, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(28, 28, 28)
-                                        .addComponent(jButton3))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(31, 31, 31)
-                                        .addComponent(jLabel2))
+                                        .addComponent(jLabel2)
+                                        .addGap(0, 0, Short.MAX_VALUE))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txt_title, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txt_title, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING)))))
                             .addComponent(jLabel1)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(11, 11, 11)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton2))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(22, Short.MAX_VALUE))
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(delete_btn1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton2))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(delete_btn2, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -217,18 +246,19 @@ public class DialogoPlatillo extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txt_idins, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton3)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(txt_name))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(spinner_kilos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel4)
+                        .addComponent(txt_name))
+                    .addComponent(jButton3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel3)
+                        .addComponent(spinner_kilos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(delete_btn2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -237,9 +267,11 @@ public class DialogoPlatillo extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jButton1)
+                        .addComponent(jButton2))
+                    .addComponent(delete_btn1))
                 .addGap(24, 24, 24))
         );
 
@@ -268,28 +300,29 @@ public class DialogoPlatillo extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        String a = txt_name.getText();
-        int value = (int) spinner_kilos.getValue();
         String id = txt_idins.getText();
-        
-        lista_nombre.add(a);
-        lista_kilos.add(String.valueOf(value));
-        lista_ids.add(id);
-
-        ListModelN.addElement(a);
-        ListModelC.addElement(value);
+        String a = txt_name.getText();
+        int value = (int) spinner_kilos.getValue();     
         ListModelI.addElement(id);
-                
+        ListModelN.addElement(a);
+        ListModelC.addElement(value);                       
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         int fila = jTable1.getSelectedRow();
         int id = (int) jTable1.getValueAt(fila, 0);
-        String nombre = (String) jTable1.getValueAt(fila, 1);
-        
+        String nombre = (String) jTable1.getValueAt(fila, 1);        
         txt_idins.setText(String.valueOf(id));
-        txt_name.setText(nombre);  
+        txt_name.setText(nombre); 
     }//GEN-LAST:event_jTable1MouseClicked
+
+    private void delete_btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete_btn1ActionPerformed
+        delete();
+    }//GEN-LAST:event_delete_btn1ActionPerformed
+
+    private void delete_btn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete_btn2ActionPerformed
+        borrar_elementos();
+    }//GEN-LAST:event_delete_btn2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -327,6 +360,8 @@ public class DialogoPlatillo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton delete_btn1;
+    private javax.swing.JButton delete_btn2;
     private javax.persistence.EntityManager entityManager0;
     private java.util.List<cocina.user_folder.Insumos_1> insumos_1List;
     private javax.persistence.Query insumos_1Query;
@@ -373,6 +408,7 @@ public class DialogoPlatillo extends javax.swing.JFrame {
             
             while(table.next()){
                 String max = table.getString(1);
+                add_values_to();
                 grabar(max);                
             }
                                     
@@ -432,8 +468,9 @@ public class DialogoPlatillo extends javax.swing.JFrame {
                     + "id_platillo = " + value;                    
             stmt = con.prepareStatement(sql);
             table = stmt.executeQuery();        
-            while (table.next()){                
-                txt_idins.setText(table.getString(1));                               
+            while (table.next()){    
+                txt_idins.setText(table.getString(1)); 
+                txt_title.setText(table.getString(2));                                               
             }                                    
                                     
         }catch(ClassNotFoundException e1){
@@ -446,6 +483,89 @@ public class DialogoPlatillo extends javax.swing.JFrame {
     }
     
     private void consultarinsumos() {
+        try{            
+            
+            Class.forName("com.mysql.jdbc.Driver");
+            String cadena = "jdbc:mysql://localhost/pro_bd?user=root&password=qonmqa3p";
+            Connection con = (Connection) DriverManager.getConnection(cadena);            
+            PreparedStatement stmt = null;            
+            
+            ResultSet table;           
+            String sql = "select id_platillo,nombre from insumos " +
+                "inner join platillos_elements on insumos.id_insumo = platillos_elements.id_insumo " +
+                "where platillos_elements.id_platillo =  " + value;                    
+            stmt = con.prepareStatement(sql);
+            table = stmt.executeQuery();        
+            
+            while (table.next()){     
+                lista_ids.add(table.getString("id_platillo"));
+                lista_nombre.add(table.getString("nombre"));
+            }                                            
+                                                            
+        }catch(ClassNotFoundException e1){
+            JOptionPane.showMessageDialog(null,e1);
+        }catch(SQLException e2){
+            JOptionPane.showMessageDialog(null,e2);
+        }catch(Exception e3){
+            JOptionPane.showMessageDialog(null,e3);
+        }
+    }
+    
+    private void consultarvalores() {
+        try{            
+            
+            Class.forName("com.mysql.jdbc.Driver");
+            String cadena = "jdbc:mysql://localhost/pro_bd?user=root&password=qonmqa3p";
+            Connection con = (Connection) DriverManager.getConnection(cadena);            
+            PreparedStatement stmt = null;            
+            
+            ResultSet table;           
+            String sql = "select cantidad from platillos_elements where id_platillo = " + value;                    
+            stmt = con.prepareStatement(sql);
+            table = stmt.executeQuery();        
+            
+            while (table.next()){                
+                lista_kilos.add(table.getString("cantidad"));
+            }                                            
+                                                            
+        }catch(ClassNotFoundException e1){
+            JOptionPane.showMessageDialog(null,e1);
+        }catch(SQLException e2){
+            JOptionPane.showMessageDialog(null,e2);
+        }catch(Exception e3){
+            JOptionPane.showMessageDialog(null,e3);
+        }
+    }
+
+    private void agregarvalores() {
+        
+        for(int x=0;x<lista_ids.size();x++){
+            ListModelC.addElement(lista_kilos.get(x));
+            ListModelI.addElement(lista_ids.get(x));
+            ListModelN.addElement(lista_nombre.get(x));            
+        }
         
     }
+
+    private void borrar_elementos() {
+        ListModelC.removeAllElements();
+        ListModelI.removeAllElements();
+        ListModelN.removeAllElements();
+    }
+    
+    private void add_values_to(){        
+        for(int x=0;x<ListModelI.size();x++){
+            lista_ids.add((String)ListModelI.get(x));
+            lista_nombre.add((String)ListModelN.get(x));
+            lista_kilos.add((String)ListModelC.get(x));            
+        }        
+    }
+
+    private void delete() {
+        String sql = "delete from platillos_elements where id_platillo = " + value;
+        connect_and_catch(sql,"Borrado");
+        String sql_2 = "delete from platillos where id_platillo = " + value;             
+        connect_and_catch(sql_2,"Borrado"); 
+    }
+    
 }

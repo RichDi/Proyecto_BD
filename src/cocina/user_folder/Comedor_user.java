@@ -360,9 +360,9 @@ public class Comedor_user extends javax.swing.JFrame {
     }//GEN-LAST:event_paquetes_tableMouseClicked
 
     private void delete_btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete_btn1ActionPerformed
-        Model_Cantidad.removeElement(Model_Cantidad.size() -1);
-        Model_No.removeElement(Model_No.size() -1);
-        Model_Name.removeElement(Model_Name.size() -1);
+        Model_Cantidad.removeAllElements();
+        Model_No.removeAllElements();
+        Model_Name.removeAllElements();
     }//GEN-LAST:event_delete_btn1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
