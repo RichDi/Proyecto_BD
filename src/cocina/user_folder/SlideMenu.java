@@ -83,7 +83,7 @@ public class SlideMenu extends javax.swing.JPanel {
         });
 
         jButton6.setBackground(new java.awt.Color(255, 255, 255));
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Alimentacion/storage.png"))); // NOI18N
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Alimentacion/HelpKitchen_almacen.png"))); // NOI18N
         jButton6.setToolTipText("");
         jButton6.setHideActionText(true);
         jButton6.addActionListener(new java.awt.event.ActionListener() {

@@ -159,7 +159,8 @@ public class DialogoPlatillo extends javax.swing.JFrame {
         delete_btn1.setBackground(new java.awt.Color(255, 102, 102));
         delete_btn1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         delete_btn1.setForeground(new java.awt.Color(255, 255, 255));
-        delete_btn1.setText("Eliminar");
+        delete_btn1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Alimentacion/HelpKitchen_Eliminar.png"))); // NOI18N
+        delete_btn1.setBorder(null);
         delete_btn1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 delete_btn1ActionPerformed(evt);
@@ -169,7 +170,8 @@ public class DialogoPlatillo extends javax.swing.JFrame {
         delete_btn2.setBackground(new java.awt.Color(255, 102, 102));
         delete_btn2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         delete_btn2.setForeground(new java.awt.Color(255, 255, 255));
-        delete_btn2.setText("Quitar");
+        delete_btn2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Alimentacion/HelpKitchen_quitar.png"))); // NOI18N
+        delete_btn2.setBorder(null);
         delete_btn2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 delete_btn2ActionPerformed(evt);
@@ -181,7 +183,7 @@ public class DialogoPlatillo extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -217,16 +219,17 @@ public class DialogoPlatillo extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(delete_btn1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(delete_btn1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(jButton2))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(delete_btn2, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -258,7 +261,7 @@ public class DialogoPlatillo extends javax.swing.JFrame {
                         .addComponent(jLabel3)
                         .addComponent(spinner_kilos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(delete_btn2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -305,7 +308,11 @@ public class DialogoPlatillo extends javax.swing.JFrame {
         int value = (int) spinner_kilos.getValue();     
         ListModelI.addElement(id);
         ListModelN.addElement(a);
-        ListModelC.addElement(value);                       
+        ListModelC.addElement(value);       
+        lista_ids.add(id);
+        lista_nombre.add(a);
+        lista_kilos.add(String.valueOf(value));            
+        
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
@@ -407,10 +414,10 @@ public class DialogoPlatillo extends javax.swing.JFrame {
             table = stmt.executeQuery();  
             
             while(table.next()){
-                String max = table.getString(1);
-                add_values_to();
-                grabar(max);                
+                String max = table.getString(1);                                           
+                grabar(max);
             }
+            
                                     
         }catch(ClassNotFoundException e1){
             JOptionPane.showMessageDialog(null,e1);
@@ -539,6 +546,10 @@ public class DialogoPlatillo extends javax.swing.JFrame {
 
     private void agregarvalores() {
         
+        System.out.println(lista_ids.size());
+        System.out.println(lista_kilos.size());
+        System.out.println(lista_nombre.size());
+        
         for(int x=0;x<lista_ids.size();x++){
             ListModelC.addElement(lista_kilos.get(x));
             ListModelI.addElement(lista_ids.get(x));
@@ -553,13 +564,7 @@ public class DialogoPlatillo extends javax.swing.JFrame {
         ListModelN.removeAllElements();
     }
     
-    private void add_values_to(){        
-        for(int x=0;x<ListModelI.size();x++){
-            lista_ids.add((String)ListModelI.get(x));
-            lista_nombre.add((String)ListModelN.get(x));
-            lista_kilos.add((String)ListModelC.get(x));            
-        }        
-    }
+    
 
     private void delete() {
         String sql = "delete from platillos_elements where id_platillo = " + value;

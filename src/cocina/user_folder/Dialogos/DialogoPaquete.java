@@ -28,10 +28,20 @@ public class DialogoPaquete extends javax.swing.JFrame {
     DefaultListModel ListModelI = new DefaultListModel();
     ArrayList<String> lista_nombres = new ArrayList<>();
     ArrayList<String> lista_ids = new ArrayList<>();
+    private int value;
     
     public DialogoPaquete() {
         initComponents();
         this.setLocationRelativeTo(null);
+    }
+    
+    public DialogoPaquete(int value) {
+        initComponents();
+        this.setLocationRelativeTo(null);
+        this.value = value;
+        consultar();
+        consultarinsumos();        
+        agregarvalores();        
     }
 
     /**
@@ -136,7 +146,8 @@ public class DialogoPaquete extends javax.swing.JFrame {
         delete_btn2.setBackground(new java.awt.Color(255, 102, 102));
         delete_btn2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         delete_btn2.setForeground(new java.awt.Color(255, 255, 255));
-        delete_btn2.setText("Quitar");
+        delete_btn2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Alimentacion/HelpKitchen_quitar.png"))); // NOI18N
+        delete_btn2.setBorder(null);
         delete_btn2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 delete_btn2ActionPerformed(evt);
@@ -146,7 +157,8 @@ public class DialogoPaquete extends javax.swing.JFrame {
         delete_btn1.setBackground(new java.awt.Color(255, 102, 102));
         delete_btn1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         delete_btn1.setForeground(new java.awt.Color(255, 255, 255));
-        delete_btn1.setText("Eliminar");
+        delete_btn1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Alimentacion/HelpKitchen_Eliminar.png"))); // NOI18N
+        delete_btn1.setBorder(null);
         delete_btn1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 delete_btn1ActionPerformed(evt);
@@ -160,18 +172,6 @@ public class DialogoPaquete extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(delete_btn1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton1)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jButton2))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(0, 0, Short.MAX_VALUE)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(tf_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
@@ -202,7 +202,20 @@ public class DialogoPaquete extends javax.swing.JFrame {
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jButton3)))))
+                                .addComponent(jButton3))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(delete_btn1)
+                                .addGap(23, 23, 23)
+                                .addComponent(jButton1)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton2))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -223,7 +236,6 @@ public class DialogoPaquete extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(txt_id))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -235,7 +247,7 @@ public class DialogoPaquete extends javax.swing.JFrame {
                             .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                                 .addComponent(jLabel1)
                                 .addGap(7, 7, 7))
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -249,7 +261,7 @@ public class DialogoPaquete extends javax.swing.JFrame {
                 .addGap(22, 22, 22)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jButton1)
+                        .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jButton2))
                     .addComponent(delete_btn1))
                 .addGap(33, 33, 33))
@@ -281,11 +293,7 @@ public class DialogoPaquete extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         String a = txt_name.getText();        
-        String id = txt_id.getText();
-        
-        lista_nombres.add(a);        
-        lista_ids.add(id);
-
+        String id = txt_id.getText();               
         ListModelN.addElement(a);        
         ListModelI.addElement(id);
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -297,6 +305,10 @@ public class DialogoPaquete extends javax.swing.JFrame {
         
         txt_id.setText(String.valueOf(id));
         txt_name.setText(nombre);  
+        
+        lista_ids.add(String.valueOf(id));
+        lista_nombres.add(nombre);            
+        
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void delete_btn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete_btn2ActionPerformed
@@ -305,7 +317,7 @@ public class DialogoPaquete extends javax.swing.JFrame {
     }//GEN-LAST:event_delete_btn2ActionPerformed
 
     private void delete_btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete_btn1ActionPerformed
-
+        delete();
     }//GEN-LAST:event_delete_btn1ActionPerformed
 
     /**
@@ -435,4 +447,85 @@ public class DialogoPaquete extends javax.swing.JFrame {
             connect_and_catch(sql,"Entrega Registrada"); 
         }  
     }
+    
+    private void agregarvalores() {        
+        for(int x=0;x<lista_ids.size();x++){            
+            ListModelI.addElement(lista_ids.get(x));
+            ListModelN.addElement(lista_nombres.get(x));            
+        }        
+    }
+
+    private void borrar_elementos() {        
+        ListModelI.removeAllElements();
+        ListModelN.removeAllElements();
+    }
+    
+    private void add_values_to(){        
+        for(int x=0;x<ListModelI.size();x++){            
+            
+        }        
+    }
+
+    private void delete() {
+        String sql = "delete from paquetes_elements where id_paquete = " + value;
+        connect_and_catch(sql,"Borrado");
+        String sql_2 = "delete from paquetes where id_paquete = " + value;             
+        connect_and_catch(sql_2,"Borrado"); 
+    }
+    
+    private void consultar() {
+        try{            
+            Class.forName("com.mysql.jdbc.Driver");
+            String cadena = "jdbc:mysql://localhost/pro_bd?user=root&password=qonmqa3p";
+            Connection con = (Connection) DriverManager.getConnection(cadena);            
+            PreparedStatement stmt = null;            
+            
+            ResultSet table;           
+            String sql = "select * from paquetes where "
+                    + "id_paquete = " + value;                    
+            stmt = con.prepareStatement(sql);
+            table = stmt.executeQuery();        
+            while (table.next()){    
+                txt_id.setText(table.getString(1)); 
+                txt_title.setText(table.getString(2));                                               
+            }                                    
+                                    
+        }catch(ClassNotFoundException e1){
+            JOptionPane.showMessageDialog(null,e1);
+        }catch(SQLException e2){
+            JOptionPane.showMessageDialog(null,e2);
+        }catch(Exception e3){
+            JOptionPane.showMessageDialog(null,e3);
+        }
+    }
+    
+    private void consultarinsumos() {
+        try{            
+            
+            Class.forName("com.mysql.jdbc.Driver");
+            String cadena = "jdbc:mysql://localhost/pro_bd?user=root&password=qonmqa3p";
+            Connection con = (Connection) DriverManager.getConnection(cadena);            
+            PreparedStatement stmt = null;            
+            
+            ResultSet table;           
+            String sql = "select id_paquete,nombre from platillos " +
+                "inner join paquetes_elements on platillos.id_platillo = paquetes_elements.id_platillo " +
+                "where paquetes_elements.id_paquete =  " + value;
+            stmt = con.prepareStatement(sql);
+            table = stmt.executeQuery();        
+            
+            while (table.next()){     
+                lista_ids.add(table.getString("id_paquete"));
+                lista_nombres.add(table.getString("nombre"));
+            }                                            
+                                                            
+        }catch(ClassNotFoundException e1){
+            JOptionPane.showMessageDialog(null,e1);
+        }catch(SQLException e2){
+            JOptionPane.showMessageDialog(null,e2);
+        }catch(Exception e3){
+            JOptionPane.showMessageDialog(null,e3);
+        }
+    }
+    
 }

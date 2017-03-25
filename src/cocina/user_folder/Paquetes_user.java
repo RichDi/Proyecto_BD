@@ -22,10 +22,6 @@ public class Paquetes_user extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
 
-    private Paquetes_user(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -76,7 +72,8 @@ public class Paquetes_user extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTable2);
 
         jButton2.setBackground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Salir");
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Alimentacion/HelpKitchen_salir.png"))); // NOI18N
+        jButton2.setBorder(null);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -84,7 +81,8 @@ public class Paquetes_user extends javax.swing.JFrame {
         });
 
         jButton3.setBackground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Actualizar");
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Alimentacion/HelpKitchen_actualizar.png"))); // NOI18N
+        jButton3.setBorder(null);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -101,7 +99,7 @@ public class Paquetes_user extends javax.swing.JFrame {
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 547, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton1)
-                        .addGap(130, 130, 130)
+                        .addGap(98, 98, 98)
                         .addComponent(jButton3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton2)))
@@ -157,7 +155,7 @@ public class Paquetes_user extends javax.swing.JFrame {
     private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
         int fila = jTable2.getSelectedRow();
         int id = (int) jTable2.getValueAt(fila, 0);  
-        Paquetes_user dia = new Paquetes_user(id);
+        DialogoPaquete dia = new DialogoPaquete(id);
         dia.setVisible(true);
     }//GEN-LAST:event_jTable2MouseClicked
 
