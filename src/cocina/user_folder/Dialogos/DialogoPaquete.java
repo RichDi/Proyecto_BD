@@ -313,7 +313,9 @@ public class DialogoPaquete extends javax.swing.JFrame {
 
     private void delete_btn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete_btn2ActionPerformed
         ListModelI.removeAllElements();
-        ListModelN.removeAllElements();        
+        ListModelN.removeAllElements();  
+        lista_ids.clear();
+        lista_nombres.clear();
     }//GEN-LAST:event_delete_btn2ActionPerformed
 
     private void delete_btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete_btn1ActionPerformed

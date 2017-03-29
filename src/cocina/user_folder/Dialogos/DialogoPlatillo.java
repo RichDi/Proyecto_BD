@@ -562,6 +562,9 @@ public class DialogoPlatillo extends javax.swing.JFrame {
         ListModelC.removeAllElements();
         ListModelI.removeAllElements();
         ListModelN.removeAllElements();
+        lista_ids.clear();
+        lista_kilos.clear();
+        lista_nombre.clear();
     }
     
     

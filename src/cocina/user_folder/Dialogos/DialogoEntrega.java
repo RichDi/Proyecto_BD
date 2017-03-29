@@ -309,6 +309,10 @@ public class DialogoEntrega extends javax.swing.JFrame {
         Lista.removeAllElements();
         ListaK.removeAllElements();
         ListaI.removeAllElements();
+        lista_ids.clear();
+        lista_kilos.clear();
+        lista_nombre.clear();
+                
     }//GEN-LAST:event_delete_btn1ActionPerformed
 
     private void delete_btn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete_btn2ActionPerformed

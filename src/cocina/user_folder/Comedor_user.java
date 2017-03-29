@@ -7,6 +7,7 @@ package cocina.user_folder;
 
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 import javax.swing.ListModel;
 
 /**
@@ -237,9 +238,9 @@ public class Comedor_user extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jButton3)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -301,14 +302,19 @@ public class Comedor_user extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Model_No.addElement(tf_id.getText());
-        lista_id.add(tf_id.getText());
+        int a = (int) spinner.getValue();
+        if(a!=0){
+            Model_No.addElement(tf_id.getText());
+            lista_id.add(tf_id.getText());
         
-        Model_Name.addElement(tf_nombre.getText());
-        lista_nombre.add(tf_nombre.getText());        
+            Model_Name.addElement(tf_nombre.getText());
+            lista_nombre.add(tf_nombre.getText());        
         
-        Model_Cantidad.addElement(spinner.getValue());
-        lista_cantidad.add(String.valueOf(spinner.getValue()));
+            Model_Cantidad.addElement(spinner.getValue());
+            lista_cantidad.add(String.valueOf(spinner.getValue()));
+        }else{
+            JOptionPane.showMessageDialog(null, "Agregue una cantidad");
+        }        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void platillos_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_platillos_tableMouseClicked
@@ -331,6 +337,11 @@ public class Comedor_user extends javax.swing.JFrame {
         Model_Cantidad.removeAllElements();
         Model_No.removeAllElements();
         Model_Name.removeAllElements();
+        
+        lista_id.clear();
+        lista_nombre.clear();
+        lista_cantidad.clear();
+        
     }//GEN-LAST:event_delete_btn1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
