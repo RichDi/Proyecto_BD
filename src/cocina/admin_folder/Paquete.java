@@ -4,7 +4,11 @@
  * and open the template in the editor.
  */
 package cocina.admin_folder;
-
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 /**
@@ -39,7 +43,7 @@ public class Paquete extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         idpaquete = new javax.swing.JTextField();
-        iddetallep = new javax.swing.JTextField();
+        nombres = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -48,31 +52,51 @@ public class Paquete extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 51));
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(204, 204, 0), new java.awt.Color(204, 204, 0), new java.awt.Color(204, 204, 0), new java.awt.Color(204, 204, 0)));
 
-        jLabel1.setFont(new java.awt.Font("Century", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Century", 0, 24)); // NOI18N
         jLabel1.setText("id_paquete");
 
-        jLabel2.setFont(new java.awt.Font("Century", 0, 18)); // NOI18N
-        jLabel2.setText("id_detallepaquete");
+        jLabel2.setFont(new java.awt.Font("Century", 0, 24)); // NOI18N
+        jLabel2.setText("Nombre");
 
         jButton1.setBackground(new java.awt.Color(255, 255, 102));
         jButton1.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Alimentacion/nuevo.png"))); // NOI18N
         jButton1.setText("Nuevo\n");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         grabar.setBackground(new java.awt.Color(255, 255, 102));
         grabar.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
         grabar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Alimentacion/grabar.png"))); // NOI18N
         grabar.setText("Grabar\n");
+        grabar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                grabarActionPerformed(evt);
+            }
+        });
 
         jButton3.setBackground(new java.awt.Color(255, 255, 102));
         jButton3.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Alimentacion/modificar.png"))); // NOI18N
         jButton3.setText("Modificar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setBackground(new java.awt.Color(255, 255, 102));
         jButton4.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Alimentacion/consultar.png"))); // NOI18N
         jButton4.setText("Consultar\n");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setBackground(new java.awt.Color(255, 255, 102));
         jButton5.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
@@ -90,9 +114,9 @@ public class Paquete extends javax.swing.JFrame {
             }
         });
 
-        iddetallep.addActionListener(new java.awt.event.ActionListener() {
+        nombres.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                iddetallepActionPerformed(evt);
+                nombresActionPerformed(evt);
             }
         });
 
@@ -113,19 +137,11 @@ public class Paquete extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(45, 45, 45)
-                                .addComponent(iddetallep, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(102, 102, 102)
-                                .addComponent(idpaquete))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
+                        .addGap(75, 75, 75)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(125, 125, 125)
+                                .addComponent(jButton2))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(36, 36, 36)
                                 .addComponent(jButton4)
@@ -138,22 +154,30 @@ public class Paquete extends javax.swing.JFrame {
                                 .addGap(28, 28, 28)
                                 .addComponent(jButton3))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(121, 121, 121)
-                        .addComponent(jButton2)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(50, 50, 50)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel1))
+                        .addGap(42, 42, 42)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(nombres, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE)
+                            .addComponent(idpaquete))))
+                .addContainerGap(74, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(idpaquete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(iddetallep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40)
+                .addGap(76, 76, 76)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel2))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(idpaquete, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(nombres, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(grabar)
@@ -162,9 +186,9 @@ public class Paquete extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton5)
                     .addComponent(jButton4))
-                .addGap(18, 18, 18)
+                .addGap(29, 29, 29)
                 .addComponent(jButton2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(28, 28, 28))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -186,18 +210,18 @@ public class Paquete extends javax.swing.JFrame {
           if(idpaquete.getText().equals(nulo)){
               JOptionPane.showMessageDialog(null,"*** El id_paquete es requerido ***");
           }else  {
-              iddetallep.requestFocusInWindow();
+              nombres.requestFocusInWindow();
     }  
     }//GEN-LAST:event_idpaqueteActionPerformed
 
-    private void iddetallepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iddetallepActionPerformed
+    private void nombresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombresActionPerformed
         String nulo="";
-          if(iddetallep.getText().equals(nulo)){
+          if(nombres.getText().equals(nulo)){
               JOptionPane.showMessageDialog(null,"*** El id_detallepaquete es requerido ***");
           }else  {
               grabar.requestFocusInWindow();
     }  
-    }//GEN-LAST:event_iddetallepActionPerformed
+    }//GEN-LAST:event_nombresActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         DetallePaquete mydetalle = new DetallePaquete();
@@ -208,9 +232,141 @@ public class Paquete extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       nuevo();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void grabarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_grabarActionPerformed
+       grabar();
+    }//GEN-LAST:event_grabarActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+       modificar();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+       consultar();
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+     public void nuevo(){
+        idpaquete.setText(""); 
+        nombres.setText(""); 
+        idpaquete.requestFocusInWindow();
+        }
+     //-------------------------------------------------------------------------------------- 
+    
+     public void grabar(){
+         try{
+            Class.forName("com.mysql.jdbc.Driver");
+            String cadena =  "jdbc:mysql://localhost/pro_bd?user=root&password=qonmqa3p";
+            Connection con = DriverManager.getConnection(cadena);
+            PreparedStatement stmt = null;
+            String id_paquete = idpaquete.getText();
+            String nombre = nombres.getText();
+            String sql="insert into paquetes values(";
+            sql += id_paquete + ",\"" +  nombre+"\")";
+            
+            //JOptionPane.showMessageDialog(null,sql);
+            stmt = con.prepareStatement(sql);
+            int sw = stmt.executeUpdate();
+            if(sw!=0){JOptionPane.showMessageDialog(null, "Registrado con exito");
+            nuevo();}
+            
+            
+        }  catch(ClassNotFoundException e1){
+
+            JOptionPane.showMessageDialog(null, e1);
+        }
+        catch(SQLException e2){
+        
+            JOptionPane.showMessageDialog(null, e2);
+        }
+        catch(Exception e3){}
+    }
+     //--------------------------------------------------------------------------------------
+    
+    public void consultar(){
+       int swh=0;
+        try{
+             Class.forName("com.mysql.jdbc.Driver");
+            String cadena =  "jdbc:mysql://localhost/pro_bd?user=root&password=qonmqa3p";
+            Connection con ;//hace coneccion
+            PreparedStatement stmt;//traduce la cadea para pasarla a la base de datos
+            ResultSet tabla;
+           con = DriverManager.getConnection(cadena);
+           String id_paquete=idpaquete.getText(); //getText (tomar texto) toma el texto del cuadro de texto y se deposita en la cadena
+           
+          String sql=  "select * from paquetes where id_paquete= ";
+          sql += id_paquete;
+          
+           //JOptionPane.showMessageDialog(null, sql);
+           stmt=con.prepareStatement(sql);
+           
+           tabla=stmt.executeQuery();
+           
+           while(tabla.next()){
+               swh=1;
+               //mientras tabla tenga un siguiente valor, que vuelva hacer el ciclo
+               nombres.setText(tabla.getString(2));
+               
+                              
+           }
+           
+
+         }catch(ClassNotFoundException e){
+         JOptionPane.showMessageDialog(null, e);
+         //null para todo objeto que no tenga valor
+     }
+     catch(SQLException e1){
+         JOptionPane.showMessageDialog(null, e1);
+     }
+     catch(Exception e2){
+         JOptionPane.showMessageDialog(null, e2);
+     }   
+        if(swh==0){
+             JOptionPane.showMessageDialog(null, " ***NO EXISTE EL REGISTRO***");
+        }
+    }
+   
+    //--------------------------------------------------------------------------------------
+    
+    
+     public void modificar(){
+        try{
+         Class.forName("com.mysql.jdbc.Driver");
+         String cadena="jdbc:mysql://localhost/pro_bd?user=root&password=qonmqa3p";
+         Connection con;
+         PreparedStatement stmt;
+         con= DriverManager.getConnection(cadena);
+         
+           String id_paquete = idpaquete.getText();
+           String id_detallepaquete= nombres.getText();
+           
+           String sql="update paquetes set ";
+           sql += "id_paquete= " + id_paquete + ", ";
+           sql += " nombre= " +"\""+ id_detallepaquete + "\"";
+           sql += " where id_paquete= " + id_paquete + " ;";
+           
+           
+           //JOptionPane.showMessageDialog(null, sql);
+           stmt=con.prepareStatement(sql);
+           int sw= stmt.executeUpdate();
+           if(sw!=0){
+               JOptionPane.showMessageDialog(null, "Registro Modificado");
+               nuevo();
+           }
+         }catch(ClassNotFoundException e){
+         JOptionPane.showMessageDialog(null, e);
+     }
+     catch(SQLException e1){
+         JOptionPane.showMessageDialog(null, e1);
+     }
+     catch(Exception e2){
+         JOptionPane.showMessageDialog(null, e2);
+     }
+    }
+     //--------------------------------------------------------------------------------------
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -234,6 +390,7 @@ public class Paquete extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Paquete.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -245,7 +402,6 @@ public class Paquete extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton grabar;
-    private javax.swing.JTextField iddetallep;
     private javax.swing.JTextField idpaquete;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -255,5 +411,6 @@ public class Paquete extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField nombres;
     // End of variables declaration//GEN-END:variables
 }

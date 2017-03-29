@@ -239,7 +239,7 @@ public class Categoria extends javax.swing.JFrame {
     public void modificar(){
         try{
          Class.forName("com.mysql.jdbc.Driver");
-         String cadena="jdbc:mysql://localhost/cocina?user=root&password=12345678";
+         String cadena="jdbc:mysql://localhost/pro_bd?user=root&password=12345678";
          Connection con;
          PreparedStatement stmt;
          con= DriverManager.getConnection(cadena);
@@ -269,16 +269,20 @@ public class Categoria extends javax.swing.JFrame {
          JOptionPane.showMessageDialog(null, e2);
      }
     }
+    //--------------------------------------------------------------------------------------
+    
     public void nuevo(){
         idcategory.setText(""); 
         nombre.setText(""); 
         diaexpedicion.setText("");
         idcategory.requestFocusInWindow();
     }
+    //--------------------------------------------------------------------------------------
+    
      public void grabar(){
          try{
             Class.forName("com.mysql.jdbc.Driver");
-            String cadena =  "jdbc:mysql://localhost/cocina?user=root&password=12345678";
+            String cadena =  "jdbc:mysql://localhost/pro_bd?user=root&password=12345678";
             Connection con = DriverManager.getConnection(cadena);
             PreparedStatement stmt = null;
             String id_category = idcategory.getText();
@@ -305,6 +309,8 @@ public class Categoria extends javax.swing.JFrame {
         }
         catch(Exception e3){}
     }
+     //--------------------------------------------------------------------------------------
+     
      public void consultar(){
        int swh=0;
         try{
@@ -347,6 +353,9 @@ public class Categoria extends javax.swing.JFrame {
              JOptionPane.showMessageDialog(null, " ***NO EXISTE EL REGISTRO***");
         }
     }
+    //--------------------------------------------------------------------------------------
+     
+     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -369,6 +378,7 @@ public class Categoria extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Categoria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */

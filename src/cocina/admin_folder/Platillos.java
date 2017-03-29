@@ -29,7 +29,7 @@ public class Platillos extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         idplatillo = new javax.swing.JTextField();
-        nombre = new javax.swing.JTextField();
+        nombres = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -88,10 +88,10 @@ public class Platillos extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Century", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Century", 0, 24)); // NOI18N
         jLabel1.setText("id_platillo");
 
-        jLabel2.setFont(new java.awt.Font("Century", 0, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Century", 0, 24)); // NOI18N
         jLabel2.setText("Nombre");
 
         idplatillo.addActionListener(new java.awt.event.ActionListener() {
@@ -100,9 +100,9 @@ public class Platillos extends javax.swing.JFrame {
             }
         });
 
-        nombre.addActionListener(new java.awt.event.ActionListener() {
+        nombres.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nombreActionPerformed(evt);
+                nombresActionPerformed(evt);
             }
         });
 
@@ -123,17 +123,8 @@ public class Platillos extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
+                        .addGap(80, 80, 80)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(40, 40, 40)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jLabel2))
-                                .addGap(58, 58, 58)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(idplatillo, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(43, 43, 43)
                                 .addComponent(jButton4)
@@ -146,9 +137,18 @@ public class Platillos extends javax.swing.JFrame {
                                 .addGap(30, 30, 30)
                                 .addComponent(jButton3))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(136, 136, 136)
-                        .addComponent(jButton2)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(201, 201, 201)
+                        .addComponent(jButton2))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2))
+                        .addGap(58, 58, 58)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(nombres, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(idplatillo, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(79, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -156,12 +156,12 @@ public class Platillos extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(idplatillo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(idplatillo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
+                    .addComponent(nombres, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(grabar)
@@ -170,9 +170,9 @@ public class Platillos extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton4)
                     .addComponent(jButton5))
-                .addGap(18, 27, Short.MAX_VALUE)
+                .addGap(31, 31, 31)
                 .addComponent(jButton2)
-                .addContainerGap())
+                .addGap(39, 39, 39))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -189,20 +189,20 @@ public class Platillos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreActionPerformed
+    private void nombresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombresActionPerformed
        String nulo="";
-          if(nombre.getText().equals(nulo)){
+          if(nombres.getText().equals(nulo)){
               JOptionPane.showMessageDialog(null,"*** El Nombre es requerido ***");
           }else  {
               grabar.requestFocusInWindow();
-    }//GEN-LAST:event_nombreActionPerformed
+    }//GEN-LAST:event_nombresActionPerformed
     }
     private void idplatilloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idplatilloActionPerformed
        String nulo="";
           if(idplatillo.getText().equals(nulo)){
               JOptionPane.showMessageDialog(null,"*** El id_platillo es requerido ***");
           }else  {
-              nombre.requestFocusInWindow();
+              nombres.requestFocusInWindow();
           }
     }//GEN-LAST:event_idplatilloActionPerformed
 
@@ -230,20 +230,21 @@ public class Platillos extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
        consultar();
     }//GEN-LAST:event_jButton4ActionPerformed
-      public void modificar(){
+     
+    public void modificar(){
         try{
          Class.forName("com.mysql.jdbc.Driver");
-         String cadena="jdbc:mysql://localhost/cocina?user=root&password=12345678";
+         String cadena="jdbc:mysql://localhost/pro_bd?user=root&password=qonmqa3p";
          Connection con;
          PreparedStatement stmt;
          con= DriverManager.getConnection(cadena);
          
            String id_saucer=idplatillo.getText();
-           String Name = nombre.getText();
+           String Name = nombres.getText();
            
            
-           String sql="update saucer set ";
-           sql += "Name= "+"\"" + Name + "\" " + " where id_saucer= " + id_saucer + " ; ";
+           String sql="update platillos set ";
+           sql += "nombre= "+"\"" + Name + "\" " + " where id_platillo= " + id_saucer + " ; ";
            
            //JOptionPane.showMessageDialog(null, sql);
            stmt=con.prepareStatement(sql);
@@ -260,23 +261,26 @@ public class Platillos extends javax.swing.JFrame {
      }
      catch(Exception e2){
          JOptionPane.showMessageDialog(null, e2);
-     }
-    }
+     } }
+     //----------------------------------------------------------------------------------      
+      
     public void nuevo(){
         idplatillo.setText(""); 
-        nombre.setText("");
+        nombres.setText("");
         idplatillo.requestFocusInWindow();
     }
-public void grabar(){
+     //----------------------------------------------------------------------------------    
+    
+        public void grabar(){
          try{
             Class.forName("com.mysql.jdbc.Driver");
-            String cadena =  "jdbc:mysql://localhost/cocina?user=root&password=12345678";
+            String cadena =  "jdbc:mysql://localhost/pro_bd?user=root&password=qonmqa3p";
             Connection con = DriverManager.getConnection(cadena);
             PreparedStatement stmt = null;
-            String id_saucer = idplatillo.getText();
-            String Name = nombre.getText();
-            String sql="insert into saucer values(";
-            sql += id_saucer + "," + "\"" +Name+"\")";
+            String id_platillo = idplatillo.getText();
+            String nombre = nombres.getText();
+            String sql="insert into platillos values(";
+            sql += id_platillo + "," + "\"" +nombre+"\")";
             
             //JOptionPane.showMessageDialog(null,sql);
             stmt = con.prepareStatement(sql);
@@ -295,19 +299,21 @@ public void grabar(){
         }
         catch(Exception e3){}
     }
+     //----------------------------------------------------------------------------------
+
      public void consultar(){
        int swh=0;
         try{
              Class.forName("com.mysql.jdbc.Driver");
-            String cadena =  "jdbc:mysql://localhost/cocina?user=root&password=12345678";
+            String cadena =  "jdbc:mysql://localhost/pro_bd?user=root&password=qonmqa3p";
             Connection con ;//hace coneccion
             PreparedStatement stmt;//traduce la cadea para pasarla a la base de datos
             ResultSet tabla;
            con = DriverManager.getConnection(cadena);
-           String id_saucer=idplatillo.getText(); //getText (tomar texto) toma el texto del cuadro de texto y se deposita en la cadena
+           String id_platillo=idplatillo.getText(); //getText (tomar texto) toma el texto del cuadro de texto y se deposita en la cadena
            
-          String sql=  "select * from saucer where id_saucer= ";
-          sql += id_saucer;
+          String sql=  "select * from platillos where id_platillo= ";
+          sql += id_platillo;
           
            //JOptionPane.showMessageDialog(null, sql);
            stmt=con.prepareStatement(sql);
@@ -317,7 +323,7 @@ public void grabar(){
            while(tabla.next()){
                swh=1;
                //mientras tabla tenga un siguiente valor, que vuelva hacer el ciclo
-               nombre.setText(tabla.getString(2));
+               nombres.setText(tabla.getString(2));
            }
            
 
@@ -335,9 +341,8 @@ public void grabar(){
              JOptionPane.showMessageDialog(null, " ***NO EXISTE EL REGISTRO***");
         }
     }
-    /**
-     * @param args the command line arguments
-     */
+     //----------------------------------------------------------------------------------
+     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -361,6 +366,7 @@ public void grabar(){
             java.util.logging.Logger.getLogger(Platillos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -381,6 +387,6 @@ public void grabar(){
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField nombre;
+    private javax.swing.JTextField nombres;
     // End of variables declaration//GEN-END:variables
 }
