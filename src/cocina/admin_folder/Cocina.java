@@ -4,8 +4,8 @@ import cocina.user_folder.Cover;
 
 public class Cocina {
 public static void main(String[] args) {
-        Cover v = new Cover();
-        v.setVisible(true);
+        Cover cov = new Cover();
+        cov.setVisible(true);
     }
     
 }

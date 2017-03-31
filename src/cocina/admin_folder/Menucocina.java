@@ -20,7 +20,6 @@ public class Menucocina extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
@@ -65,16 +64,6 @@ public class Menucocina extends javax.swing.JFrame {
             }
         });
         jMenu1.add(jMenuItem3);
-
-        jMenuItem4.setBackground(new java.awt.Color(255, 0, 0));
-        jMenuItem4.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        jMenuItem4.setText("Entrega");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem4);
 
         jMenuItem5.setBackground(new java.awt.Color(51, 51, 255));
         jMenuItem5.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
@@ -154,11 +143,6 @@ public class Menucocina extends javax.swing.JFrame {
        
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-       Entrega myentrega = new Entrega();
-       myentrega.setVisible(true);
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
-
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
        Categoria mycategoria = new Categoria();
        mycategoria.setVisible(true); 
@@ -198,7 +182,6 @@ public class Menucocina extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;

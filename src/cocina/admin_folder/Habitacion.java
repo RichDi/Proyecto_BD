@@ -1,5 +1,11 @@
 package cocina.admin_folder;
 import javax.swing.JOptionPane;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.*;
 public class Habitacion extends javax.swing.JFrame {
     public Habitacion() {
         initComponents();
@@ -18,10 +24,8 @@ public class Habitacion extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         idhabitacion = new javax.swing.JTextField();
-        numero = new javax.swing.JTextField();
-        iddieta = new javax.swing.JTextField();
+        numeros = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         grabar = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -34,14 +38,11 @@ public class Habitacion extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(0, 255, 0));
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 153, 0), new java.awt.Color(0, 153, 0), new java.awt.Color(0, 153, 0), new java.awt.Color(0, 153, 0)));
 
-        jLabel1.setFont(new java.awt.Font("Century", 0, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Century", 0, 24)); // NOI18N
         jLabel1.setText("id_habitacion");
 
-        jLabel2.setFont(new java.awt.Font("Century", 0, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Century", 0, 24)); // NOI18N
         jLabel2.setText("Número");
-
-        jLabel3.setFont(new java.awt.Font("Century", 0, 14)); // NOI18N
-        jLabel3.setText("id_dieta");
 
         idhabitacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -49,15 +50,9 @@ public class Habitacion extends javax.swing.JFrame {
             }
         });
 
-        numero.addActionListener(new java.awt.event.ActionListener() {
+        numeros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                numeroActionPerformed(evt);
-            }
-        });
-
-        iddieta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                iddietaActionPerformed(evt);
+                numerosActionPerformed(evt);
             }
         });
 
@@ -65,21 +60,41 @@ public class Habitacion extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Alimentacion/nuevo.png"))); // NOI18N
         jButton1.setText("Nuevo\n");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         grabar.setBackground(new java.awt.Color(0, 153, 0));
         grabar.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
         grabar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Alimentacion/grabar.png"))); // NOI18N
         grabar.setText("Grabar\n");
+        grabar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                grabarActionPerformed(evt);
+            }
+        });
 
         jButton3.setBackground(new java.awt.Color(0, 153, 0));
         jButton3.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Alimentacion/modificar.png"))); // NOI18N
         jButton3.setText("Modificar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setBackground(new java.awt.Color(0, 153, 0));
         jButton4.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Alimentacion/consultar.png"))); // NOI18N
         jButton4.setText("Consultar\n");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setBackground(new java.awt.Color(0, 153, 0));
         jButton5.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
@@ -96,49 +111,47 @@ public class Habitacion extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(iddieta)
-                    .addComponent(numero, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
-                    .addComponent(idhabitacion))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(68, 68, 68)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(159, 159, 159)
-                        .addComponent(grabar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
-                        .addComponent(jButton3))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(159, 159, 159)
+                                .addComponent(grabar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(32, 32, 32)
+                                .addComponent(jButton3))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(51, 51, 51)
+                                .addComponent(jButton4)
+                                .addGap(61, 61, 61)
+                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jButton1))
+                        .addContainerGap(54, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addComponent(jButton4)
-                        .addGap(61, 61, 61)
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton1))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(93, 93, 93)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(numeros, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                                    .addComponent(idhabitacion))))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(58, 58, 58)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel1)
-                    .addComponent(idhabitacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
+                    .addComponent(idhabitacion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
-                    .addComponent(numero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(iddieta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(numeros, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(43, 43, 43)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(grabar)
@@ -169,35 +182,156 @@ public class Habitacion extends javax.swing.JFrame {
           if(idhabitacion.getText().equals(nulo)){
               JOptionPane.showMessageDialog(null,"*** El id_habitacion es requerido ***");
           }else  {
-              numero.requestFocusInWindow();
+              numeros.requestFocusInWindow();
           }
     }//GEN-LAST:event_idhabitacionActionPerformed
 
-    private void numeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numeroActionPerformed
+    private void numerosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numerosActionPerformed
         String nulo="";
-          if(numero.getText().equals(nulo)){
+          if(numeros.getText().equals(nulo)){
               JOptionPane.showMessageDialog(null,"*** El Numero es requerido ***");
-          }else  {
-              iddieta.requestFocusInWindow();
-          }
-    }//GEN-LAST:event_numeroActionPerformed
-
-    private void iddietaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iddietaActionPerformed
-       String nulo="";
-          if(iddieta.getText().equals(nulo)){
-              JOptionPane.showMessageDialog(null,"*** El id_dieta es requerido ***");
           }else  {
               grabar.requestFocusInWindow();
           }
-    }//GEN-LAST:event_iddietaActionPerformed
+    }//GEN-LAST:event_numerosActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
        dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       nuevo();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void grabarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_grabarActionPerformed
+       grabar();
+    }//GEN-LAST:event_grabarActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+       modificar();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+       consultar();
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    public void nuevo(){
+        idhabitacion.setText(""); 
+        numeros.setText(""); 
+       
+        idhabitacion.requestFocusInWindow();
+        }
+     //--------------------------------------------------------------------------------------  
+     public void grabar(){
+         try{
+            Class.forName("com.mysql.jdbc.Driver");
+            String cadena =  "jdbc:mysql://localhost/pro_bd?user=root&password=qonmqa3p";
+            Connection con = DriverManager.getConnection(cadena);
+            PreparedStatement stmt = null;
+            String id_habitacion = idhabitacion.getText();
+            String numero = numeros.getText();
+            
+            String sql="insert into habitaciones values(";
+            sql += id_habitacion + ","  +numero+ ")";
+            
+            //JOptionPane.showMessageDialog(null,sql);
+            stmt = con.prepareStatement(sql);
+            int sw = stmt.executeUpdate();
+            if(sw!=0){JOptionPane.showMessageDialog(null, "Registrado con exito");
+            nuevo();}
+            
+            
+        }  catch(ClassNotFoundException e1){
+
+            JOptionPane.showMessageDialog(null, e1);
+        }
+        catch(SQLException e2){
+        
+            JOptionPane.showMessageDialog(null, e2);
+        }
+        catch(Exception e3){}
+    }
+     //--------------------------------------------------------------------------------------
+    
+    public void consultar(){
+       int swh=0;
+        try{
+             Class.forName("com.mysql.jdbc.Driver");
+            String cadena =  "jdbc:mysql://localhost/pro_bd?user=root&password=12345678";
+            Connection con ;//hace coneccion
+            PreparedStatement stmt;//traduce la cadea para pasarla a la base de datos
+            ResultSet tabla;
+           con = DriverManager.getConnection(cadena);
+           String id_habitacion=idhabitacion.getText(); //getText (tomar texto) toma el texto del cuadro de texto y se deposita en la cadena
+           
+          String sql=  "select * from habitaciones where id_habitacion= ";
+          sql += id_habitacion;
+          
+           //JOptionPane.showMessageDialog(null, sql);
+           stmt=con.prepareStatement(sql);
+           
+           tabla=stmt.executeQuery();
+           
+           while(tabla.next()){
+               swh=1;
+               //mientras tabla tenga un siguiente valor, que vuelva hacer el ciclo
+               numeros.setText(tabla.getString(2));
+               
+                              
+           }
+           
+
+         }catch(ClassNotFoundException e){
+         JOptionPane.showMessageDialog(null, e);
+         //null para todo objeto que no tenga valor
+     }
+     catch(SQLException e1){
+         JOptionPane.showMessageDialog(null, e1);
+     }
+     catch(Exception e2){
+         JOptionPane.showMessageDialog(null, e2);
+     }   
+        if(swh==0){
+             JOptionPane.showMessageDialog(null, " ***NO EXISTE EL REGISTRO***");
+        }
+    }
+    //--------------------------------------------------------------------------------------
+    
+     public void modificar(){
+        try{
+         Class.forName("com.mysql.jdbc.Driver");
+         String cadena="jdbc:mysql://localhost/pro_bd?user=root&password=12345678";
+         Connection con;
+         PreparedStatement stmt;
+         con= DriverManager.getConnection(cadena);
+         
+           String id_habitacion=idhabitacion.getText();
+           String numero = numeros.getText();
+          
+           
+           String sql="update habitaciones set ";
+           sql += "id_habitacion= "+"\"" + id_habitacion + "\",";
+           sql += "numero= "+ numero + " where id_habitacion= " + id_habitacion + " ; ";
+           
+           //JOptionPane.showMessageDialog(null, sql);
+           stmt=con.prepareStatement(sql);
+           int sw= stmt.executeUpdate();
+           if(sw!=0){
+               JOptionPane.showMessageDialog(null, "Registro Modificado");
+               nuevo();
+           }
+         }catch(ClassNotFoundException e){
+         JOptionPane.showMessageDialog(null, e);
+     }
+     catch(SQLException e1){
+         JOptionPane.showMessageDialog(null, e1);
+     }
+     catch(Exception e2){
+         JOptionPane.showMessageDialog(null, e2);
+     }
+    }
+     //--------------------------------------------------------------------------------------
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -221,6 +355,7 @@ public class Habitacion extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Habitacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -232,7 +367,6 @@ public class Habitacion extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton grabar;
-    private javax.swing.JTextField iddieta;
     private javax.swing.JTextField idhabitacion;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
@@ -240,8 +374,7 @@ public class Habitacion extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField numero;
+    private javax.swing.JTextField numeros;
     // End of variables declaration//GEN-END:variables
 }

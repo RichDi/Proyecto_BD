@@ -5,6 +5,8 @@
  */
 package cocina.user_folder;
 
+import cocina.admin_folder.Usuario;
+
 /**
  *
  * @author drdr_
@@ -35,12 +37,16 @@ public class Cover extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
-        setPreferredSize(new java.awt.Dimension(800, 600));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jcMousePanel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Alimentacion/HOME/Logo_horizontal.png"))); // NOI18N
         jcMousePanel3.setVisibleLogo(false);
+        jcMousePanel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jcMousePanel3MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jcMousePanel3Layout = new javax.swing.GroupLayout(jcMousePanel3);
         jcMousePanel3.setLayout(jcMousePanel3Layout);
@@ -126,6 +132,11 @@ public class Cover extends javax.swing.JFrame {
         mf.setVisible(true);        
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jcMousePanel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jcMousePanel3MouseClicked
+        Usuario usu = new Usuario();
+        usu.setVisible(true);
+    }//GEN-LAST:event_jcMousePanel3MouseClicked
 
     /**
      * @param args the command line arguments
