@@ -89,8 +89,8 @@ public class DialogoPlatillo extends javax.swing.JFrame {
         delete_btn = new javax.swing.JButton();
         remove_btn = new javax.swing.JButton();
         label_id = new javax.swing.JLabel();
-        output_name = new javax.swing.JLabel();
         output_id = new javax.swing.JLabel();
+        output_name = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -186,8 +186,6 @@ public class DialogoPlatillo extends javax.swing.JFrame {
 
         label_id.setText("ID");
 
-        output_name.setText("...");
-
         output_id.setText("...");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -208,8 +206,8 @@ public class DialogoPlatillo extends javax.swing.JFrame {
                                 .addComponent(label_id)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(output_name, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(output_id, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(output_id, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(output_name))
                         .addGap(2, 2, 2))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(delete_btn)
@@ -256,12 +254,13 @@ public class DialogoPlatillo extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(tf_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(label_name)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(label_name)
+                            .addComponent(output_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(label_id))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(output_name)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(20, 20, 20)
                         .addComponent(output_id)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -289,7 +288,7 @@ public class DialogoPlatillo extends javax.swing.JFrame {
                 .addGap(4, 4, 4)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane4)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
                     .addComponent(jScrollPane1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -325,10 +324,11 @@ public class DialogoPlatillo extends javax.swing.JFrame {
 
     private void save_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_btnActionPerformed
         if(modificador==1){
-            add_values_to_lists();            
-            grabar(getMax());                  
-        }else{
-            System.out.println(getMax());
+            add_values_to_lists();
+            delete_elements_platiilos(value);
+            modificar();
+        }else{            
+            add_values_to_lists(); 
             grabar(getMax());                 
         }
     }//GEN-LAST:event_save_btnActionPerformed
@@ -416,7 +416,7 @@ public class DialogoPlatillo extends javax.swing.JFrame {
     private javax.swing.JLabel label_id;
     private javax.swing.JLabel label_name;
     private javax.swing.JLabel output_id;
-    private javax.swing.JLabel output_name;
+    private javax.swing.JTextField output_name;
     private javax.swing.JButton remove_btn;
     private javax.swing.JButton save_btn;
     private javax.swing.JSpinner spinner_kilos;
@@ -426,11 +426,8 @@ public class DialogoPlatillo extends javax.swing.JFrame {
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 
-    private String getMax() {
-        String sql_e = "insert into platillos(nombre) values (" 
-                + "\"" +output_name.getText()+ "\");";        
-        connect_and_catch(sql_e,"Agregado Platillo"); 
-        
+    private String getMax() {        
+        String max = null;
         try{            
             Class.forName("com.mysql.jdbc.Driver");
             String cadena = "jdbc:mysql://localhost/pro_bd?user=root&password=qonmqa3p";
@@ -443,10 +440,9 @@ public class DialogoPlatillo extends javax.swing.JFrame {
             table = stmt.executeQuery();  
             
             while(table.next()){
-                String max = table.getString(1);                                           
+                max = table.getString(1);
                 return max;
-            }
-            
+            }            
                                     
         }catch(ClassNotFoundException e1){
             JOptionPane.showMessageDialog(null,e1);
@@ -454,8 +450,9 @@ public class DialogoPlatillo extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,e2);
         }catch(Exception e3){
             JOptionPane.showMessageDialog(null,e3);
-        }   
-        return "1";
+        }                     
+                        
+        return max;
     }
 
     private void connect_and_catch(String sql, String mensaje) {
@@ -479,17 +476,23 @@ public class DialogoPlatillo extends javax.swing.JFrame {
         } 
     }
 
-    private void grabar(String max) {
+    private void grabar(String max) {        
+        String sql_e = "insert into platillos(nombre) values (" 
+                + "\"" +output_name.getText()+ "\");";        
+        connect_and_catch(sql_e,"Agregado Platillo"); 
+        
         for(int x=0;x<lista_ids.size();x++){         
             String ids = (String) lista_ids.get(x); 
+            String cantidad = (String) lista_kilos.get(x); 
             System.out.println(ids);
-            String sql = "insert into platillos_elements(id_platillo,id_insumo) values("
-                + max + ","                   
-                + ids + ");";
+            String sql = "insert into platillos_elements(id_platillo,id_insumo,cantidad) values("
+                + getMax() + ","                   
+                + ids + ","
+                + cantidad +");";
         
             System.out.println(sql);
         
-            connect_and_catch(sql,"Entrega Registrada"); 
+            connect_and_catch(sql,"Platillo Registrado"); 
         }       
     }
 
@@ -530,11 +533,13 @@ public class DialogoPlatillo extends javax.swing.JFrame {
             ResultSet table;           
             String sql = "select id_platillo,nombre from insumos " +
                 "inner join platillos_elements on insumos.id_insumo = platillos_elements.id_insumo " +
-                "where platillos_elements.id_platillo =  " + value;                    
+                "where platillos_elements.id_platillo =  " + value;    
+            System.out.println(sql);
             stmt = con.prepareStatement(sql);
             table = stmt.executeQuery();        
             
             while (table.next()){     
+                System.out.println(table.getString("id_platillo"));
                 lista_ids.add(table.getString("id_platillo"));
                 lista_nombre.add(table.getString("nombre"));
             }                                            
@@ -580,6 +585,8 @@ public class DialogoPlatillo extends javax.swing.JFrame {
         System.out.println(lista_kilos.size());
         System.out.println(lista_nombre.size());
         
+        
+        
         for(int x=0;x<lista_ids.size();x++){
             ListModelC.addElement(lista_kilos.get(x));
             ListModelI.addElement(lista_ids.get(x));
@@ -598,7 +605,20 @@ public class DialogoPlatillo extends javax.swing.JFrame {
     }
     
     private void modificar(){
+        delete_elements_platiilos(value);
+        for(int x=0;x<lista_ids.size();x++){         
+            String ids = (String) lista_ids.get(x); 
+            String cantidad = (String) lista_kilos.get(x); 
+            System.out.println(ids);
+            String sql = "insert into platillos_elements(id_platillo,id_insumo,cantidad) values("
+                + value + ","                   
+                + ids + ","
+                + cantidad +");";
         
+            System.out.println(sql);
+        
+            connect_and_catch(sql,"Platillo Registrado"); 
+        }       
     }
     
     private void full_delete(int id) {
@@ -617,9 +637,7 @@ public class DialogoPlatillo extends javax.swing.JFrame {
         connect_and_catch(sql,"Borrado");
     }   
     
-    private void hide_elements() {
-        output_id.setVisible(false);
-        output_name.setVisible(false);
+    private void hide_elements() {        
         label_name.setVisible(false);
         label_id.setVisible(false);   
         delete_btn.setVisible(false);
@@ -631,9 +649,9 @@ public class DialogoPlatillo extends javax.swing.JFrame {
         ListModel model_cant = jList_cant.getModel(); 
         
         for(int i=0; i < model_id.getSize(); i++){
-            String id = (String) model_id.getElementAt(i);  
-            String name = (String) model_name.getElementAt(i);
-            String cant = (String) model_cant.getElementAt(i);
+            String id = String.valueOf(model_id.getElementAt(i));  
+            String name = String.valueOf(model_name.getElementAt(i));
+            String cant = String.valueOf(model_cant.getElementAt(i));
             lista_ids.add(id);
             lista_nombre.add(name);
             lista_kilos.add(cant);

@@ -44,7 +44,9 @@ public class DialogoEntrega extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.value = id;
-        modificador = 1;        
+        tf_titulo.setText("Mod Entrega");
+        modificador = 1;  
+        save_btn.setVisible(false);
         consultar();        
     }
 
@@ -181,7 +183,7 @@ public class DialogoEntrega extends javax.swing.JFrame {
             }
         });
 
-        label_name.setText("Nombre de Entrega");
+        label_name.setText("Fecha de Entrega");
 
         label_id.setText("ID");
 
@@ -225,7 +227,7 @@ public class DialogoEntrega extends javax.swing.JFrame {
                         .addComponent(delete_btn)
                         .addGap(34, 34, 34)
                         .addComponent(cancel_btn)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
                         .addComponent(save_btn))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
@@ -315,11 +317,11 @@ public class DialogoEntrega extends javax.swing.JFrame {
 
     private void save_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_btnActionPerformed
         if(modificador==1){
+                       
+        }else{
             add_values_to_lists();            
             grabar(getMax());
-            sumarinsumo();            
-        }else{
-                        
+            sumarinsumo();                         
         }
         
     }//GEN-LAST:event_save_btnActionPerformed
@@ -612,18 +614,20 @@ public class DialogoEntrega extends javax.swing.JFrame {
     }
 
     private void full_delete(int id) {
-        delete_elemements(value);
-        delete_paquete(value);
+        delete_elemements(id);
+        delete_paquete(id);
         
     }
     
     private void delete_elemements(int id){
-        String sql = "delete from paquetes_elements where id_paquete = " + id;
+        String sql = "delete from entrega_elements where id_entrega = " + id + ";";
+        System.out.println(sql);
         connect_and_catch(sql,"Borrado");
     }
     
     private void delete_paquete(int id){
-        String sql_2 = "delete from paquetes where id_paquete = " + id;             
+        String sql_2 = "delete from entregas where id_entrega = " + id + ";";             
+        System.out.println(sql_2);
         connect_and_catch(sql_2,"Borrado"); 
     }
 

@@ -85,8 +85,8 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="output_name" alignment="0" max="32767" attributes="0"/>
-                              <Component id="output_id" alignment="1" max="32767" attributes="0"/>
+                              <Component id="output_id" max="32767" attributes="0"/>
+                              <Component id="output_name" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                       </Group>
@@ -149,13 +149,15 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="tf_titulo" alignment="0" min="-2" pref="29" max="-2" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="label_name" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="label_name" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="output_name" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="label_id" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
-                          <Component id="output_name" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                           <Component id="output_id" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -191,7 +193,7 @@
                   <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jScrollPane4" max="32767" attributes="0"/>
-                      <Component id="jScrollPane3" pref="193" max="32767" attributes="0"/>
+                      <Component id="jScrollPane3" pref="187" max="32767" attributes="0"/>
                       <Component id="jScrollPane1" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -448,15 +450,12 @@
             <Property name="text" type="java.lang.String" value="ID"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="output_name">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="..."/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JLabel" name="output_id">
           <Properties>
             <Property name="text" type="java.lang.String" value="..."/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="output_name">
         </Component>
       </SubComponents>
     </Container>

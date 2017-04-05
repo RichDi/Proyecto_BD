@@ -1,31 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
-  <persistence-unit name="cocina_hospital?zeroDateTimeBehavior=convertToNullPU" transaction-type="RESOURCE_LOCAL">
-    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-    <class>cocina.user_folder.Dieta</class>
-    <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/cocina_hospital?zeroDateTimeBehavior=convertToNull"/>
-      <property name="javax.persistence.jdbc.user" value="root"/>
-      <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
-      <property name="javax.persistence.jdbc.password" value="qonmqa3p"/>
-    </properties>
-  </persistence-unit>
-  <persistence-unit name="bd?zeroDateTimeBehavior=convertToNullPU" transaction-type="RESOURCE_LOCAL">
-    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-    <class>cocina.user_folder.Insumos_1</class>
-    <class>cocina.user_folder.Platillos</class>
-    <class>cocina.user_folder.Entrega</class>
-    <class>cocina.user_folder.Paquetes</class>
-    <class>cocina.user_folder.Entregas</class>
-    <class>cocina.user_folder.EntregaElements</class>
-    <class>cocina.user_folder.Habitaciones</class>
-    <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/bd?zeroDateTimeBehavior=convertToNull"/>
-      <property name="javax.persistence.jdbc.user" value="root"/>
-      <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
-      <property name="javax.persistence.jdbc.password" value="qonmqa3p"/>
-    </properties>
-  </persistence-unit>
   <persistence-unit name="pro_bd?zeroDateTimeBehavior=convertToNullPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>cocina.user_folder.Insumos_1</class>

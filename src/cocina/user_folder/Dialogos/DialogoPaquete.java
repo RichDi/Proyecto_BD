@@ -13,6 +13,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import javax.swing.ListModel;
 
 /**
  *
@@ -65,7 +66,7 @@ public class DialogoPaquete extends javax.swing.JFrame {
         cancel_btn = new javax.swing.JButton();
         save_btn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        jList_name = new javax.swing.JList<>();
         jLabel1 = new javax.swing.JLabel();
         add_btn = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -73,15 +74,15 @@ public class DialogoPaquete extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         txt_name = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jList2 = new javax.swing.JList<>();
+        jList_id = new javax.swing.JList<>();
         txt_id = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         label_name = new javax.swing.JLabel();
         remove_btn = new javax.swing.JButton();
         delete_btn = new javax.swing.JButton();
         label_id = new javax.swing.JLabel();
-        output_name = new javax.swing.JLabel();
         output_id = new javax.swing.JLabel();
+        output_name = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -106,8 +107,8 @@ public class DialogoPaquete extends javax.swing.JFrame {
             }
         });
 
-        jList1.setModel(ListModelN);
-        jScrollPane1.setViewportView(jList1);
+        jList_name.setModel(ListModelN);
+        jScrollPane1.setViewportView(jList_name);
 
         jLabel1.setText("Detalles");
 
@@ -139,8 +140,8 @@ public class DialogoPaquete extends javax.swing.JFrame {
 
         txt_name.setText("Platillo Seleccionado");
 
-        jList2.setModel(ListModelI);
-        jScrollPane3.setViewportView(jList2);
+        jList_id.setModel(ListModelI);
+        jScrollPane3.setViewportView(jList_id);
 
         txt_id.setText("...");
 
@@ -172,9 +173,13 @@ public class DialogoPaquete extends javax.swing.JFrame {
 
         label_id.setText("ID");
 
-        output_name.setText("...");
-
         output_id.setText("...");
+
+        output_name.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                output_nameActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -194,16 +199,6 @@ public class DialogoPaquete extends javax.swing.JFrame {
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(jScrollPane1))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(tf_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(label_id)
-                                .addComponent(label_name))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(output_name, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
-                                .addComponent(output_id, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -217,7 +212,18 @@ public class DialogoPaquete extends javax.swing.JFrame {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(add_btn, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(remove_btn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(remove_btn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(tf_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(label_id)
+                            .addComponent(label_name))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(output_id, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
+                            .addComponent(output_name))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -227,12 +233,13 @@ public class DialogoPaquete extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(tf_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(label_name)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(label_name)
+                            .addComponent(output_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(label_id))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(output_name)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(20, 20, 20)
                         .addComponent(output_id)))
                 .addGap(14, 14, 14)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -247,7 +254,7 @@ public class DialogoPaquete extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel4)
                                     .addComponent(txt_name))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -288,10 +295,11 @@ public class DialogoPaquete extends javax.swing.JFrame {
     }//GEN-LAST:event_cancel_btnActionPerformed
 
     private void save_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_btnActionPerformed
+        add_values_to();
         if(modificador==1){
-            getMax();
+            modificar();
         }else{
-            
+            grabar();            
         }
     }//GEN-LAST:event_save_btnActionPerformed
 
@@ -316,15 +324,16 @@ public class DialogoPaquete extends javax.swing.JFrame {
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void remove_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_remove_btnActionPerformed
-        ListModelI.removeAllElements();
-        ListModelN.removeAllElements();  
-        lista_ids.clear();
-        lista_nombres.clear();
+        borrar_elementos();
     }//GEN-LAST:event_remove_btnActionPerformed
 
     private void delete_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete_btnActionPerformed
         delete();
     }//GEN-LAST:event_delete_btnActionPerformed
+
+    private void output_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_output_nameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_output_nameActionPerformed
 
     /**
      * @param args the command line arguments
@@ -369,8 +378,8 @@ public class DialogoPaquete extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JList<String> jList1;
-    private javax.swing.JList<String> jList2;
+    private javax.swing.JList<String> jList_id;
+    private javax.swing.JList<String> jList_name;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -379,7 +388,7 @@ public class DialogoPaquete extends javax.swing.JFrame {
     private javax.swing.JLabel label_id;
     private javax.swing.JLabel label_name;
     private javax.swing.JLabel output_id;
-    private javax.swing.JLabel output_name;
+    private javax.swing.JTextField output_name;
     private java.util.List<cocina.user_folder.Platillos> platillosList;
     private javax.persistence.Query platillosQuery;
     private javax.swing.JButton remove_btn;
@@ -390,10 +399,26 @@ public class DialogoPaquete extends javax.swing.JFrame {
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 
-    private void getMax() {
-        String sql_e = "insert into paquetes(nombre) values (" 
-                + "\"" +output_name.getText()+ "\");";        
-        connect_and_catch(sql_e,"Agregado Paquete"); 
+    private void modificar(){
+        delete_elements();
+        
+        for(int x=0;x<lista_ids.size();x++){         
+            String ids = (String) lista_ids.get(x);            
+            
+            System.out.println(ids);                
+            String sql = "insert into paquetes_elements(id_paquete,id_platillo) values("
+                + getMax() + ","  
+                + ids + ");";
+        
+            System.out.println(sql);
+        
+            connect_and_catch(sql,"Entrega Registrada"); 
+        }  
+    }
+        
+    private String getMax() {        
+        
+        String max = null;
         
         try{            
             Class.forName("com.mysql.jdbc.Driver");
@@ -407,8 +432,8 @@ public class DialogoPaquete extends javax.swing.JFrame {
             table = stmt.executeQuery();  
             
             while(table.next()){
-                String max = table.getString(1);
-                grabar(max);
+                max = table.getString(1);
+                return max;
             }
                                     
         }catch(ClassNotFoundException e1){
@@ -418,6 +443,7 @@ public class DialogoPaquete extends javax.swing.JFrame {
         }catch(Exception e3){
             JOptionPane.showMessageDialog(null,e3);
         }     
+        return max;
     }
 
     private void connect_and_catch(String sql, String mensaje) {
@@ -441,13 +467,18 @@ public class DialogoPaquete extends javax.swing.JFrame {
         } 
     }
 
-    private void grabar(String max) {
+    private void grabar() {
+        
+        String sql_e = "insert into paquetes(nombre) values (" 
+                + "\"" +output_name.getText()+ "\");";        
+        connect_and_catch(sql_e,"Agregado Paquete"); 
+        
         for(int x=0;x<lista_ids.size();x++){         
             String ids = (String) lista_ids.get(x);            
             
             System.out.println(ids);                
             String sql = "insert into paquetes_elements(id_paquete,id_platillo) values("
-                + max + ","  
+                + getMax() + ","  
                 + ids + ");";
         
             System.out.println(sql);
@@ -469,14 +500,29 @@ public class DialogoPaquete extends javax.swing.JFrame {
     }
     
     private void add_values_to(){        
-        for(int x=0;x<ListModelI.size();x++){            
+        ListModel model_id = jList_id.getModel(); 
+        ListModel model_name = jList_name.getModel();         
+        
+        for(int i=0; i < model_id.getSize(); i++){
+            String id = String.valueOf(model_id.getElementAt(i));  
+            String name = String.valueOf(model_name.getElementAt(i));            
+            lista_ids.add(id);
+            lista_nombres.add(name);
             
-        }        
+        }            
     }
 
     private void delete() {
+        delete_paquete();
+        delete_elements();        
+    }
+    
+    private void delete_paquete(){
         String sql = "delete from paquetes_elements where id_paquete = " + value;
         connect_and_catch(sql,"Borrado");
+    }
+    
+    private void delete_elements(){
         String sql_2 = "delete from paquetes where id_paquete = " + value;             
         connect_and_catch(sql_2,"Borrado"); 
     }

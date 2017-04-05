@@ -108,7 +108,7 @@
                           <Component id="delete_btn" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                           <Component id="cancel_btn" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="37" max="32767" attributes="0"/>
+                          <EmptySpace pref="104" max="32767" attributes="0"/>
                           <Component id="save_btn" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
@@ -436,7 +436,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="label_name">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Nombre de Entrega"/>
+            <Property name="text" type="java.lang.String" value="Fecha de Entrega"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="label_id">
